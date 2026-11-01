@@ -1,0 +1,32 @@
+# OS / 编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+
+# 打包产物
+*.zip
+*.7z
+*.tar.gz
+
+# 本地临时文件
+*~
+*.log
+tmp/
+temp/
+
+# 凭据与本地环境（保险起见，绝不入库）
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+.npmrc
+
+# Python（若有人本地起 http.server）
+__pycache__/
+*.pyc
+.venv/
+venv/

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="referrer-policy" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'" />
+<title>Calculus Chapter 2–3 Revision Hub · Limits, Derivatives and the Rules of Differentiation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous" referrerpolicy="no-referrer">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="progress-rail"><div id="rail"></div></div>
+<div class="langbar">
+  <a href="index.html">中文</a>
+  <span>English</span>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">Stewart · Early Transcendentals</span>
+      <h1>Chapter 2–3 Revision Hub</h1>
+      <p class="lede">Limits, Derivatives and the Rules of Differentiation — the full 2.1–2.8 and 3.1–3.5 syllabus map, worked class examples, the assigned homework numbers, a random self-test and an exam sprint plan. Scoped exactly to the Oct 06 – Oct 27 lecture notes.</p>
+      <div class="hero-stats" id="heroStats"></div>
+    </div>
+    <div class="hero-ring-wrap">
+      <svg class="ring" viewBox="0 0 120 120" role="img" aria-label="Study progress">
+        <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+        <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"></circle>
+      </svg>
+      <div class="ring-label"><strong id="ringPct">0%</strong><span>problems completed</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab is-active" data-view="scope">Syllabus</button>
+  <button class="tab" data-view="concept">Concepts</button>
+  <button class="tab" data-view="cards">Flashcards</button>
+  <button class="tab" data-view="hw">Homework</button>
+  <button class="tab" data-view="practice">Examples</button>
+  <button class="tab" data-view="quiz">Self-Test</button>
+  <button class="tab" data-view="pitfall">Traps</button>
+  <button class="tab" data-view="sheet">Formulas</button>
+  <button class="tab" data-view="plan">Sprint Plan</button>
+</nav>
+
+<main class="wrap">
+
+  <!-- ══ Syllabus map ══ -->
+  <section class="view is-active" id="view-scope">
+    <div class="section-head">
+      <h2>Syllabus Map</h2>
+      <p>Every topic with its weight, the results you must be able to state, and where the assigned homework sits. Start here to see what still needs work.</p>
+    </div>
+    <div id="scopeMap" class="scope-grid"></div>
+    <div class="section-head">
+      <h2>Homework Distribution</h2>
+      <p>The exact exercise numbers assigned in the textbook, section by section, across Chapters 2 and 3.</p>
+    </div>
+    <div id="hwTable" class="hw-table"></div>
+  </section>
+
+  <!-- ══ Concept checklist ══ -->
+  <section class="view" id="view-concept">
+    <div class="section-head">
+      <h2>Concept Checklist</h2>
+      <p>Definitions, theorems and formulas section by section. Twenty minutes here before the exam.</p>
+    </div>
+    <div id="conceptBody" class="concept-body"></div>
+  </section>
+
+  <!-- ══ Flashcards ══ -->
+  <section class="view" id="view-cards">
+    <div class="section-head">
+      <h2>Flashcards</h2>
+      <p>Flip to test yourself. A card you mark as "needs practice" comes back sooner.</p>
+    </div>
+    <div class="flash-wrap">
+      <div class="flash" id="flash">
+        <div class="flash-inner">
+          <div class="flash-face flash-front" id="flashFront"></div>
+          <div class="flash-face flash-back" id="flashBack"></div>
+        </div>
+      </div>
+      <div class="flash-controls">
+        <button class="btn ghost" id="flashPrev">← Previous</button>
+        <span class="flash-count" id="flashCount"></span>
+        <button class="btn ghost" id="flashNext">Next →</button>
+      </div>
+      <div class="flash-actions">
+        <button class="btn" id="flashKnown">Got it</button>
+        <button class="btn warn" id="flashAgain">Needs practice</button>
+      </div>
+      <p class="flash-hint">Click the card to flip it</p>
+    </div>
+  </section>
+
+  <!-- ══ Homework bank ══ -->
+  <section class="view" id="view-hw">
+    <div class="section-head">
+      <h2>Textbook Homework Bank</h2>
+      <p>Every assigned problem from Chapter 2 of the textbook, with the answer and a step-by-step solution. Items marked "check" have an ambiguous formula in the PDF text layer — verify them against the printed page. The Chapter 3 assignment numbers are listed under Syllabus Map; that question bank is being extended.</p>
+    </div>
+    <div class="callout blue" style="margin-bottom:16px">
+      <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+      <div><b>The Chapter 3 question bank is still being extended.</b> The assigned exercise numbers for Chapter 3 (3.1–3.5) are fully listed under Syllabus Map → Homework Distribution. Because the textbook PDF text layer cannot be read at the moment, the original statements and reference answers are not yet included. The 35 Chapter 3 classroom examples, each with a full worked solution, are already available under Worked Examples.</div>
+    </div>
+    <div class="filters" id="hwFilters"></div>
+    <div class="practice-toolbar">
+      <span id="hwCount"></span>
+      <button class="btn ghost sm" id="hwExpandAll">Expand all solutions</button>
+      <button class="btn ghost sm" id="hwCollapseAll">Collapse all</button>
+    </div>
+    <div id="hwList" class="problem-list"></div>
+  </section>
+
+  <!-- ══ Worked examples ══ -->
+  <section class="view" id="view-practice">
+    <div class="section-head">
+      <h2>Worked Examples</h2>
+      <p>The examples solved in class, 2.1 to 2.8. Answers are collapsed by default — try it yourself first. Ticking "Done" updates the progress ring.</p>
+    </div>
+    <div class="filters" id="practiceFilters"></div>
+    <div class="practice-toolbar">
+      <span id="practiceCount"></span>
+      <button class="btn ghost sm" id="expandAll">Expand all solutions</button>
+      <button class="btn ghost sm" id="collapseAll">Collapse all</button>
+      <button class="btn ghost sm" id="resetProgress">Clear progress</button>
+    </div>
+    <div id="problemList" class="problem-list"></div>
+  </section>
+
+  <!-- ══ Self-test ══ -->
+  <section class="view" id="view-quiz">
+    <div class="section-head">
+      <h2>Random Self-Test</h2>
+      <p>Draw questions at random from the whole chapter, work under a timer, then review every question with its solution.</p>
+    </div>
+    <div class="quiz-setup" id="quizSetup">
+      <div class="setup-row">
+        <label>Questions
+          <select id="quizNum"><option>5</option><option>10</option><option>15</option><option>20</option><option>30</option></select>
+        </label>
+        <label>Scope
+          <select id="quizScope">
+            <option value="all">Whole chapter 2.1–2.8</option>
+          </select>
+        </label>
+        <label>Timer
+          <select id="quizTimer"><option value="0">No timer</option><option value="600">10 minutes</option><option value="1200">20 minutes</option><option value="1800">30 minutes</option></select>
+        </label>
+      </div>
+      <button class="btn primary" id="quizStart">Start the self-test</button>
+    </div>
+    <div id="quizArea" class="quiz-area" hidden>
+      <div class="quiz-bar">
+        <span id="quizProgress"></span>
+        <span id="quizClock"></span>
+      </div>
+      <div id="quizQ"></div>
+      <div class="quiz-foot">
+        <button class="btn ghost" id="quizPrev">Previous</button>
+        <button class="btn primary" id="quizNext">Next</button>
+      </div>
+    </div>
+    <div id="quizResult" class="quiz-result" hidden></div>
+  </section>
+
+  <!-- ══ Common traps ══ -->
+  <section class="view" id="view-pitfall">
+    <div class="section-head">
+      <h2>Common Traps</h2>
+      <p>The mistakes that cost the most points on this chapter. Walk through the list before the exam.</p>
+    </div>
+    <div id="pitfallList" class="pitfall-list"></div>
+  </section>
+
+  <!-- ══ Formula sheet ══ -->
+  <section class="view" id="view-sheet">
+    <div class="section-head">
+      <h2>Formula Sheet</h2>
+      <p>The whole chapter on one page. Print it and take it into the exam room.</p>
+    </div>
+    <div class="sheet-toolbar">
+      <button class="btn primary sm" id="printSheet">Print / Save as PDF</button>
+    </div>
+    <div id="sheetBody" class="sheet"></div>
+  </section>
+
+  <!-- ══ Sprint plan ══ -->
+  <section class="view" id="view-plan">
+    <div class="section-head">
+      <h2>Exam Sprint Plan</h2>
+      <p>Pick the schedule that matches the time you have left, run it with the five-step loop and the wrong-answer triage table, and keep the last-ten-minutes list on its own.</p>
+    </div>
+    <div id="planBody"></div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Built from the lecture notes (NotesOnOct06 – NotesOnOct27), Stewart《Early Transcendentals》and the official Solutions Manual · progress is stored in your own browser</p>
+</footer>
+
+<script src="assets/en/data.js"></script>
+<script src="assets/en/problems.js"></script>
+<script src="assets/en/hw.js"></script>
+<script src="assets/en/hw2.js"></script>
+<script src="assets/en/ch3.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

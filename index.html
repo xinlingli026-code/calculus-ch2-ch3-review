@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="referrer-policy" content="strict-origin-when-cross-origin" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'" />
+<title>Calculus Chapter 2–3 复习备考站 · Limits, Derivatives and the Rules of Differentiation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous" referrerpolicy="no-referrer">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<div class="progress-rail"><div id="rail"></div></div>
+<div class="langbar">
+  <span>中文</span>
+  <a href="index-en.html">English</a>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">Stewart · Early Transcendentals</span>
+      <h1>Chapter 2–3 复习备考站</h1>
+      <p class="lede">Limits, Derivatives 与 Derivatives 的求导法则 —— Chapter 2 的 2.1–2.8 与 Chapter 3 的 3.1–3.5 完整考点地图、课堂例题精讲、作业题号分布、随机自测与考前冲刺方案。范围严格对齐 Oct 06 – Oct 27 课堂笔记。</p>
+      <div class="hero-stats" id="heroStats"></div>
+    </div>
+    <div class="hero-ring-wrap">
+      <svg class="ring" viewBox="0 0 120 120" role="img" aria-label="学习进度">
+        <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+        <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"></circle>
+      </svg>
+      <div class="ring-label"><strong id="ringPct">0%</strong><span>已完成题目</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab is-active" data-view="scope">考纲地图</button>
+  <button class="tab" data-view="concept">概念速查</button>
+  <button class="tab" data-view="cards">记忆卡</button>
+  <button class="tab" data-view="hw">教材作业</button>
+  <button class="tab" data-view="practice">刷题</button>
+  <button class="tab" data-view="quiz">随机自测</button>
+  <button class="tab" data-view="pitfall">易错点</button>
+  <button class="tab" data-view="sheet">公式速查表</button>
+  <button class="tab" data-view="plan">冲刺方案</button>
+</nav>
+
+<main class="wrap">
+
+  <!-- ══ 考纲地图 ══ -->
+  <section class="view is-active" id="view-scope">
+    <div class="section-head">
+      <h2>考纲地图</h2>
+      <p>每个考点的权重、必会结论与作业题号分布。先看这张图，再决定哪一块先补。</p>
+    </div>
+    <div id="scopeMap" class="scope-grid"></div>
+    <div class="section-head">
+      <h2>作业分布</h2>
+      <p>老师在笔记里指定的题号，全部来自教材 Exercises（Chapter 2 与 Chapter 3）。</p>
+    </div>
+    <div id="hwTable" class="hw-table"></div>
+  </section>
+
+  <!-- ══ 概念速查 ══ -->
+  <section class="view" id="view-concept">
+    <div class="section-head">
+      <h2>概念速查</h2>
+      <p>定义、判定式与结论速查表。按小节组织，考试前二十分钟过一遍。</p>
+    </div>
+    <div id="conceptBody" class="concept-body"></div>
+  </section>
+
+  <!-- ══ 记忆卡 ══ -->
+  <section class="view" id="view-cards">
+    <div class="section-head">
+      <h2>记忆卡</h2>
+      <p>翻卡自测。答错会自动把卡片放回复习队列，下次优先出现。</p>
+    </div>
+    <div class="flash-wrap">
+      <div class="flash" id="flash">
+        <div class="flash-inner">
+          <div class="flash-face flash-front" id="flashFront"></div>
+          <div class="flash-face flash-back" id="flashBack"></div>
+        </div>
+      </div>
+      <div class="flash-controls">
+        <button class="btn ghost" id="flashPrev">← 上一张</button>
+        <span class="flash-count" id="flashCount"></span>
+        <button class="btn ghost" id="flashNext">下一张 →</button>
+      </div>
+      <div class="flash-actions">
+        <button class="btn" id="flashKnown">已掌握</button>
+        <button class="btn warn" id="flashAgain">再练一次</button>
+      </div>
+      <p class="flash-hint">点卡片本身翻面</p>
+    </div>
+  </section>
+
+  <!-- ══ 教材作业 ══ -->
+  <section class="view" id="view-hw">
+    <div class="section-head">
+      <h2>教材作业题库</h2>
+      <p>Stewart 教材 Chapter 2 中老师布置的全部题目，题干为中英对照，附答案与解法；标有"核对"提示的条目表示 PDF 文本层有歧义，请对照书页确认。Chapter 3 的作业题号见「考纲地图」，该节题库正在补充中。</p>
+    </div>
+    <div class="callout blue" style="margin-bottom:16px">
+      <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
+      <div><b>Chapter 3 的作业题库正在补充中。</b>Chapter 3（3.1–3.5）老师布置的题号已完整列在「考纲地图 · 作业分布」中；由于教材 PDF 文本层暂时无法读取，题干原文与标准答案尚未收录。Chapter 3 的课堂例题（35 道，含完整解法）已在「刷题」中，可直接使用。</div>
+    </div>
+    <div class="filters" id="hwFilters"></div>
+    <div class="practice-toolbar">
+      <span id="hwCount"></span>
+      <button class="btn ghost sm" id="hwExpandAll">全部展开答案</button>
+      <button class="btn ghost sm" id="hwCollapseAll">全部收起</button>
+    </div>
+    <div id="hwList" class="problem-list"></div>
+  </section>
+
+  <!-- ══ 刷题 ══ -->
+  <section class="view" id="view-practice">
+    <div class="section-head">
+      <h2>刷题</h2>
+      <p>课堂作业题库，按小节筛选。答案默认折叠，先自己想再看解析。勾选"已做"会同步到进度环。</p>
+    </div>
+    <div class="filters" id="practiceFilters"></div>
+    <div class="practice-toolbar">
+      <span id="practiceCount"></span>
+      <button class="btn ghost sm" id="expandAll">全部展开答案</button>
+      <button class="btn ghost sm" id="collapseAll">全部收起</button>
+      <button class="btn ghost sm" id="resetProgress">清除进度</button>
+    </div>
+    <div id="problemList" class="problem-list"></div>
+  </section>
+
+  <!-- ══ 随机自测 ══ -->
+  <section class="view" id="view-quiz">
+    <div class="section-head">
+      <h2>随机自测</h2>
+      <p>从全章随机抽题，限时作答，结束后给出得分与错题回看。</p>
+    </div>
+    <div class="quiz-setup" id="quizSetup">
+      <div class="setup-row">
+        <label>题量
+          <select id="quizNum"><option>5</option><option>10</option><option>15</option><option>20</option><option>30</option></select>
+        </label>
+        <label>范围
+          <select id="quizScope">
+            <option value="all">全章 2.1–2.8</option>
+          </select>
+        </label>
+        <label>计时
+          <select id="quizTimer"><option value="0">不计时</option><option value="600">10 分钟</option><option value="1200">20 分钟</option><option value="1800">30 分钟</option></select>
+        </label>
+      </div>
+      <button class="btn primary" id="quizStart">开始自测</button>
+    </div>
+    <div id="quizArea" class="quiz-area" hidden>
+      <div class="quiz-bar">
+        <span id="quizProgress"></span>
+        <span id="quizClock"></span>
+      </div>
+      <div id="quizQ"></div>
+      <div class="quiz-foot">
+        <button class="btn ghost" id="quizPrev">上一题</button>
+        <button class="btn primary" id="quizNext">下一题</button>
+      </div>
+    </div>
+    <div id="quizResult" class="quiz-result" hidden></div>
+  </section>
+
+  <!-- ══ 易错点 ══ -->
+  <section class="view" id="view-pitfall">
+    <div class="section-head">
+      <h2>易错点</h2>
+      <p>这门课丢分最集中的十几件事。考前逐条对照。</p>
+    </div>
+    <div id="pitfallList" class="pitfall-list"></div>
+  </section>
+
+  <!-- ══ 公式速查表 ══ -->
+  <section class="view" id="view-sheet">
+    <div class="section-head">
+      <h2>公式速查表</h2>
+      <p>一页装下全章。打印出来带进考场。</p>
+    </div>
+    <div class="sheet-toolbar">
+      <button class="btn primary sm" id="printSheet">打印 / 存为 PDF</button>
+    </div>
+    <div id="sheetBody" class="sheet"></div>
+  </section>
+
+  <!-- ══ 冲刺方案 ══ -->
+  <section class="view" id="view-plan">
+    <div class="section-head">
+      <h2>考试冲刺方案</h2>
+      <p>按你剩下的时间选一档节奏，配合五步循环和错题分诊表执行；考场前十分钟清单单独一栏。</p>
+    </div>
+    <div id="planBody"></div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>基于课堂笔记（NotesOnOct06 – NotesOnOct27）、Stewart《Early Transcendentals》教材与官方 Solutions Manual 整理 · 进度保存在本机浏览器</p>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/problems.js"></script>
+<script src="assets/hw.js"></script>
+<script src="assets/ch3.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
