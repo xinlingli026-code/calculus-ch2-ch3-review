@@ -19,13 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-ADDITIONAL NOTE ON THIRD-PARTY MATERIAL (not covered by the MIT grant)
-
-This repository contains original explanations, worked solutions and study
-material authored for this project. Exercises, problem statements and the
-Solutions Manual from Stewart, "Calculus: Early Transcendentals" are the
-property of McGraw-Hill Education / the author and are NOT licensed under the
-MIT License above. See DISCLAIMER.md for details.

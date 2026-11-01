@@ -14,7 +14,8 @@ owners and are used here for identification only.
 ## 2. 版权
 
 - 本仓库中的**讲解文字、解题步骤、知识结构梳理、记忆卡、易错点、冲刺方案、页面代码与样式**
-  属于本项目的原创内容，按 [MIT License](LICENSE) 发布。
+  属于本项目的原创内容，按 [MIT License](LICENSE) 发布（该 MIT 授权仅覆盖上述原创内容，
+  不及于教材本身）。
 - 教材中的**习题原文、插图、Solutions Manual** 属于 McGraw-Hill Education / 作者，
   **不**在 MIT 授权范围内。本仓库收录的作业条目为**为复习目的整理的题目编号、知识点指向
   与自行推导的答案与解法**，不应被视为教材原文的复制分发。
