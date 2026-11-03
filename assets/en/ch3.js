@@ -122,32 +122,32 @@ const FLASHCARDS3 = [
 ];
 
 const PITFALLS3 = [
-  { t: 'Writing the product rule as a product of derivatives', w: '$(uv)\' = u\'v\'$.', r: '$(uv)\'=uv\'+vu\'$ — two terms added.', why: 'Class example $(3x^2-5)(2x^4-x)$: expanding first gives $36x^5-40x^3-9x^2+5$, matching the product rule.' },
-  { t: 'Reversing the numerator of the quotient rule', w: '$(u/v)\'=\\dfrac{uv\'-vu\'}{v^2}$.', r: 'The numerator is $v u\'-u v\'$ — v first, u second, each with its own derivative.', why: 'Check with $u=3x-5$, $v=x^2+7$: $\\dfrac{3(x^2+7)-(3x-5)(2x)}{(x^2+7)^2}$.' },
-  { t: 'Dropping the inner derivative in the chain rule', w: '$\\dfrac{d}{dx}(x^2+2x)^3=3(x^2+2x)^2$.', r: 'Multiply by the inner derivative as well: $3(x^2+2x)^2(2x+2)$.', why: 'This is the single most common source of lost points in the chapter.' },
-  { t: 'Unwrapping only one layer', w: '$\\dfrac{d}{dx}\\sin^3(4x)=3\\sin^2(4x)\\cos(4x)$.', r: 'Three layers means three factors: $3\\sin^2(4x)\\cdot\\cos(4x)\\cdot4=12\\sin^2(4x)\\cos(4x)$.', why: '$\\sin[\\cos(x^2)]$ needs three factors too: $\\cos[\\cos(x^2)]\\cdot(-\\sin(x^2))\\cdot2x$.' },
-  { t: 'Treating trig formulas as universal', w: 'Applying $d/dx\\sin x=\\cos x$ to $\\sin(ax)$.', r: 'Write $\\sin(ax)$ and apply the chain rule: $\\dfrac{d}{dx}\\sin(ax)=\\cos(ax)\\cdot a$.', why: '$\\sin^3(4x)$ and $\\sin(4x)$ are different functions.' },
-  { t: 'Forgetting radians', w: 'Applying trig derivative formulas to data in degrees.', r: 'All trigonometric derivative formulas hold only in radians; in degrees multiply by $\\tfrac{\\pi}{180}$.', why: 'Radians are the default assumption in this course.' },
-  { t: 'Misusing the special limit', w: 'Assuming $\\dfrac{\\sin3x}{x}=3$ for every x.', r: '$\\lim_{x\\to0}\\sin3x/x=3$ holds only as $x\\to0$; elsewhere use the equivalent form of $\\sin u/u\\to1$.', why: 'The proof relies on $3x\\to0$.' },
-  { t: 'Treating y as a constant in implicit differentiation', w: 'Differentiating $y^3+7y=x^3$ as $3y^2+7=3x^2$.', r: 'y is a function of x: write $3y^2y\'+7y\'=3x^2$, then solve for $y\'$.', why: 'Dropping y′ means you have not differentiated at all.' },
-  { t: 'Reading "horizontal" as "steepest"', w: 'Looking for the maximum of $|f\'|$.', r: 'Horizontal tangent ⇔ slope $0$ ⇔ $f\'(a)=0$; steepest corresponds to the largest $|f\'|$.', why: 'Both questions often appear in the same problem.' },
-  { t: 'Not converting radicals to powers', w: 'Stuck on $y=\\dfrac{x+1}{\\sqrt x}$.', r: 'Write $y=x^{1/2}+x^{-1/2}$ and use the power rule: $y\'=\\dfrac{x-1}{2x^{3/2}}$.', why: 'Negative exponents handle every radical and reciprocal.' }
+  { sec: '3.2', t: 'Writing the product rule as a product of derivatives', w: '$(uv)\' = u\'v\'$.', r: '$(uv)\'=uv\'+vu\'$ — two terms added.', why: 'Class example $(3x^2-5)(2x^4-x)$: expanding first gives $36x^5-40x^3-9x^2+5$, matching the product rule.' },
+  { sec: '3.2', t: 'Reversing the numerator of the quotient rule', w: '$(u/v)\'=\\dfrac{uv\'-vu\'}{v^2}$.', r: 'The numerator is $v u\'-u v\'$ — v first, u second, each with its own derivative.', why: 'Check with $u=3x-5$, $v=x^2+7$: $\\dfrac{3(x^2+7)-(3x-5)(2x)}{(x^2+7)^2}$.' },
+  { sec: '3.4', t: 'Dropping the inner derivative in the chain rule', w: '$\\dfrac{d}{dx}(x^2+2x)^3=3(x^2+2x)^2$.', r: 'Multiply by the inner derivative as well: $3(x^2+2x)^2(2x+2)$.', why: 'This is the single most common source of lost points in the chapter.' },
+  { sec: '3.4', t: 'Unwrapping only one layer', w: '$\\dfrac{d}{dx}\\sin^3(4x)=3\\sin^2(4x)\\cos(4x)$.', r: 'Three layers means three factors: $3\\sin^2(4x)\\cdot\\cos(4x)\\cdot4=12\\sin^2(4x)\\cos(4x)$.', why: '$\\sin[\\cos(x^2)]$ needs three factors too: $\\cos[\\cos(x^2)]\\cdot(-\\sin(x^2))\\cdot2x$.' },
+  { sec: '3.3', t: 'Treating trig formulas as universal', w: 'Applying $d/dx\\sin x=\\cos x$ to $\\sin(ax)$.', r: 'Write $\\sin(ax)$ and apply the chain rule: $\\dfrac{d}{dx}\\sin(ax)=\\cos(ax)\\cdot a$.', why: '$\\sin^3(4x)$ and $\\sin(4x)$ are different functions.' },
+  { sec: '3.3', t: 'Forgetting radians', w: 'Applying trig derivative formulas to data in degrees.', r: 'All trigonometric derivative formulas hold only in radians; in degrees multiply by $\\tfrac{\\pi}{180}$.', why: 'Radians are the default assumption in this course.' },
+  { sec: '3.3', t: 'Misusing the special limit', w: 'Assuming $\\dfrac{\\sin3x}{x}=3$ for every x.', r: '$\\lim_{x\\to0}\\sin3x/x=3$ holds only as $x\\to0$; elsewhere use the equivalent form of $\\sin u/u\\to1$.', why: 'The proof relies on $3x\\to0$.' },
+  { sec: '3.5', t: 'Treating y as a constant in implicit differentiation', w: 'Differentiating $y^3+7y=x^3$ as $3y^2+7=3x^2$.', r: 'y is a function of x: write $3y^2y\'+7y\'=3x^2$, then solve for $y\'$.', why: 'Dropping y′ means you have not differentiated at all.' },
+  { sec: '3.5', t: 'Reading "horizontal" as "steepest"', w: 'Looking for the maximum of $|f\'|$.', r: 'Horizontal tangent ⇔ slope $0$ ⇔ $f\'(a)=0$; steepest corresponds to the largest $|f\'|$.', why: 'Both questions often appear in the same problem.' },
+  { sec: '3.1', t: 'Not converting radicals to powers', w: 'Stuck on $y=\\dfrac{x+1}{\\sqrt x}$.', r: 'Write $y=x^{1/2}+x^{-1/2}$ and use the power rule: $y\'=\\dfrac{x-1}{2x^{3/2}}$.', why: 'Negative exponents handle every radical and reciprocal.' }
 ];
 
 const SHEET3 = [
-  { title: '3.1 Basic differentiation', items: [
+  { ch: '3', title: '3.1 Basic differentiation', items: [
     { lab: 'Power rule', tex: '\\frac{d}{dx}x^n=nx^{n-1}\\quad (n\\in\\mathbb{R},\\ x>0)' },
     { lab: 'Constants and lines', tex: '\\frac{d}{dx}c=0,\\quad \\frac{d}{dx}x=1' },
     { lab: 'Linear rules', tex: 'D_x[kf]=kD_xf,\\quad D_x[f\\pm g]=D_xf\\pm D_xg' },
     { lab: 'Exponentials', tex: '\\frac{d}{dx}e^x=e^x,\\qquad \\frac{d}{dx}a^x=a^x\\ln a' },
     { lab: 'Definition of e', tex: 'e:\\ \\lim_{h\\to0}\\frac{e^h-1}{h}=1' }
   ]},
-  { title: '3.2 Product and quotient', items: [
+  { ch: '3', title: '3.2 Product and quotient', items: [
     { lab: 'Product rule', tex: '\\frac{d}{dx}(uv)=u\\frac{dv}{dx}+v\\frac{du}{dx}' },
     { lab: 'Quotient rule', tex: "\\frac{d}{dx}\\frac{u}{v}=\\frac{v\\frac{du}{dx}-u\\frac{dv}{dx}}{v^2}" },
     { lab: 'Sanity check', tex: '\\text{The rule must agree with "expand first, then differentiate"}' }
   ]},
-  { title: '3.3 Trigonometric functions', items: [
+  { ch: '3', title: '3.3 Trigonometric functions', items: [
     { lab: 'Special limits', tex: '\\lim_{t\\to0}\\frac{\\sin t}{t}=1,\\qquad \\lim_{t\\to0}\\frac{1-\\cos t}{t}=0' },
     { lab: 'Area comparison', tex: '\\sin\\theta<\\theta<\\tan\\theta\\quad (0<\\theta<\\tfrac\\pi2)' },
     { lab: 'sin / cos', tex: '\\frac{d}{dx}\\sin x=\\cos x,\\quad \\frac{d}{dx}\\cos x=-\\sin x' },
@@ -155,12 +155,12 @@ const SHEET3 = [
     { lab: 'sec / csc', tex: '\\frac{d}{dx}\\sec x=\\sec x\\tan x,\\quad \\frac{d}{dx}\\csc x=-\\csc x\\cot x' },
     { lab: 'Caveat', tex: '\\text{All trigonometric derivative formulas assume radians}' }
   ]},
-  { title: '3.4 Chain rule', items: [
+  { ch: '3', title: '3.4 Chain rule', items: [
     { lab: 'Chain rule', tex: '(f\\circ g)\'(x)=f\'(g(x))\\cdot g\'(x)' },
     { lab: 'Differential form', tex: '\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx}' },
     { lab: 'Nested composite', tex: '\\frac{d}{dx}\\sin^3(4x)=3\\sin^2(4x)\\cos(4x)\\cdot4' }
   ]},
-  { title: '3.5 Implicit differentiation', items: [
+  { ch: '3', title: '3.5 Implicit differentiation', items: [
     { lab: 'Rule', tex: '\\text{When differentiating in }x,\\ y\\text{ is a function of }x\\text{ — every }y\\text{ term carries }y\'' },
     { lab: 'Example', tex: 'y^3+7y=x^3 \\Rightarrow y\'=\\frac{3x^2}{3y^2+7}' },
     { lab: 'Horizontal tangent', tex: 'Set y\'=0 and solve together with the original equation' }

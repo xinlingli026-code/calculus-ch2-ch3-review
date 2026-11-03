@@ -25,8 +25,12 @@
   <div class="hero-inner">
     <div class="hero-copy">
       <span class="eyebrow">Stewart · Early Transcendentals</span>
-      <h1>Chapter 2–3 复习备考站</h1>
-      <p class="lede">Limits, Derivatives 与 Derivatives 的求导法则 —— Chapter 2 的 2.1–2.8 与 Chapter 3 的 3.1–3.5 完整考点地图、课堂例题精讲、作业题号分布、随机自测与考前冲刺方案。范围严格对齐 Oct 06 – Oct 27 课堂笔记。</p>
+      <h1 id="heroTitle">Chapter 2 复习备考站</h1>
+      <p class="lede" id="heroLede">Limits and Derivatives —— 2.1 到 2.8 的完整考点地图、课堂例题精讲、作业题号分布、随机自测与考前冲刺方案。</p>
+      <div class="chswitch-wrap">
+        <span class="chswitch-label">专题</span>
+        <div class="chswitch" id="chSwitch"></div>
+      </div>
       <div class="hero-stats" id="heroStats"></div>
     </div>
     <div class="hero-ring-wrap">
@@ -108,9 +112,9 @@
       <h2>教材作业题库</h2>
       <p>Stewart 教材 Chapter 2 中老师布置的全部题目，题干为中英对照，附答案与解法；标有"核对"提示的条目表示 PDF 文本层有歧义，请对照书页确认。Chapter 3 的作业题号见「考纲地图」，该节题库正在补充中。</p>
     </div>
-    <div class="callout blue" style="margin-bottom:16px">
+    <div class="callout blue" id="hwNoteWrap" style="margin-bottom:16px">
       <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>
-      <div><b>Chapter 3 的作业题库正在补充中。</b>Chapter 3（3.1–3.5）老师布置的题号已完整列在「考纲地图 · 作业分布」中；由于教材 PDF 文本层暂时无法读取，题干原文与标准答案尚未收录。Chapter 3 的课堂例题（35 道，含完整解法）已在「刷题」中，可直接使用。</div>
+      <div id="hwNote"></div>
     </div>
     <div class="filters" id="hwFilters"></div>
     <div class="practice-toolbar">
@@ -214,6 +218,7 @@
 <script src="assets/problems.js"></script>
 <script src="assets/hw.js"></script>
 <script src="assets/ch3.js"></script>
+<script src="assets/ch3b.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

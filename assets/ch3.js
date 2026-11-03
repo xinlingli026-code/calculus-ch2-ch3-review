@@ -10,7 +10,7 @@ const SECTIONS3 = [
   { id: '3.2', name: 'Product and Quotient Rules', cn: '积法则与商法则', en: 'Product & Quotient Rules', hw: [1,3,5,7,9,11,13,15,17,19,21,23,25,31,43,45,47,49,55], weight: 3, tags: ['必考', '易漏内层导数'] },
   { id: '3.3', name: 'Derivatives of Trigonometric Functions', cn: '三角函数求导', en: 'Trigonometric Functions', hw: [1,3,5,7,9,11,13,15,17,18,19,20,23,33,35,39,41,43,45,51,57], weight: 5, tags: ['重点', '题型最多'] },
   { id: '3.4', name: 'The Chain Rule', cn: '链式法则', en: 'The Chain Rule', hw: [7,9,11,13,15,17,25,27,29,31,43,51,53,61,71,73,79,81], weight: 5, tags: ['重点', '计算量大'] },
-  { id: '3.5', name: 'Implicit Differentiation', cn: '隐函数求导', en: 'Implicit Differentiation', hw: [], weight: 3, tags: ['新内容', '作业题号待确认'] }
+  { id: '3.5', name: 'Implicit Differentiation', cn: '隐函数求导与逆三角函数求导', en: 'Implicit & Inverse Trig', hw: [5,7,9,11,13,15,17,19,27,35,49,51,57,63,75], weight: 5, tags: ['重点', '含逆三角函数', '作业 p.215'] }
 ];
 
 const SCOPE_CARDS3 = {
@@ -31,8 +31,8 @@ const SCOPE_CARDS3 = {
     must: ['(f∘g)′(x) = f′(g(x))·g′(x)', 'dy/dx = dy/du · du/dx', '多层复合要逐层乘', '指数型 d/dx aˣ = aˣ ln a']
   },
   '3.5': {
-    desc: '隐函数求导：对含 y 的方程两边同时对 x 求导，把 y 当作 x 的函数，最后解出 y′。',
-    must: ['对 x 求导时 y 是 x 的函数', '解出 y′ 的代数步骤', '用 y′ 求切线方程或水平切线']
+    desc: '隐函数求导：对含 y 的方程两边同时对 x 求导，把 y 当作 x 的函数，最后解出 y′。本节后半段用同一套隐函数技巧推出三个逆三角函数的导数。',
+    must: ['对 x 求导时 y 是 x 的函数', '解出 y′ 的代数步骤', '用 y′ 求切线方程或水平切线', 'd/dx arcsin x = 1/√(1−x²)', 'd/dx arccos x = −1/√(1−x²)', 'd/dx arctan x = 1/(1+x²)']
   }
 };
 
@@ -126,33 +126,33 @@ const FLASHCARDS3 = [
 
 /* ---------- 易错点（第 3 章） ---------- */
 const PITFALLS3 = [
-  { t: '积法则写成两个导数相乘', w: '$(uv)\' = u\'v\'$。', r: '$(uv)\'=uv\'+vu\'$，是两项之和。', why: '课堂例题 $(3x^2-5)(2x^4-x)$：展开求导得 $36x^5-40x^3-9x^2+5$，与积法则结果一致。' },
-  { t: '商法则分子写反', w: '$(u/v)\'=\\dfrac{uv\'-vu\'}{v^2}$。', r: '分子是 $v u\'-u v\'$，顺序是"v 在前、u 在后"，各自配自己的导数。', why: '代入 $u=3x-5$、$v=x^2+7$ 可核对：$\\dfrac{3(x^2+7)-(3x-5)(2x)}{(x^2+7)^2}$。' },
-  { t: '链式法则漏乘内层导数', w: '$\\dfrac{d}{dx}(x^2+2x)^3=3(x^2+2x)^2$。', r: '必须再乘内层导数：$3(x^2+2x)^2(2x+2)$。', why: '这是本章最高频的扣分点，链式法则每层都要乘一个导数因子。' },
-  { t: '复合函数只拆一层', w: '$\\dfrac{d}{dx}\\sin^3(4x)=3\\sin^2(4x)\\cos(4x)$。', r: '三层要乘三份因子：$3\\sin^2(4x)\\cdot\\cos(4x)\\cdot4=12\\sin^2(4x)\\cos(4x)$。', why: '$\\sin[\\cos(x^2)]$ 要乘三份：$\\cos[\\cos(x^2)]\\cdot(-\\sin(x^2))\\cdot2x$。' },
-  { t: '三角导数公式当成了万能公式', w: '认为 $\\dfrac{d}{dx}\\sin ax=a\\cos ax$ 可以直接用。', r: '必须写成 $\\sin(ax)$ 再套链式法则：$\\dfrac{d}{dx}\\sin(ax)=\\cos(ax)\\cdot a$。', why: '$\\sin^3(4x)$ 与 $\\sin(4x)$ 是两回事。' },
-  { t: '忘了用弧度制', w: '直接套 $d/dx\\sin x=\\cos x$ 处理角度制数据。', r: '所有三角函数的导数公式只在弧度制下成立，角度制要多乘 $\\tfrac{\\pi}{180}$。', why: '课堂特别强调弧度制是默认前提。' },
-  { t: '特殊极限用错场合', w: '认为 $\\dfrac{\\sin3x}{x}=3$ 对任何 x 成立。', r: '$\\lim_{x\\to0}\\sin3x/x=3$ 只在 $x\\to0$ 时成立；远离 0 时要用 $\\sin u/u\\to1$ 的等价变形。', why: '证明依赖 $3x\\to0$。' },
-  { t: '隐函数求导把 y 当常数', w: '对 $y^3+7y=x^3$ 求导写成 $3y^2+7=3x^2$。', r: 'y 是 x 的函数，必须写 $3y^2y\'+7y\'=3x^2$，再解出 $y\'$。', why: '漏掉 y′ 就等于没求导。' },
-  { t: '水平切线求成切线斜率最大', w: '把"水平"理解成"最陡"。', r: '水平切线 ⇔ 斜率为 0 ⇔ $f\'(a)=0$；最陡对应 $|f\'|$ 最大。', why: '两问常在同一道题里对比出现。' },
-  { t: '根式不化成幂', w: '对 $y=\\dfrac{x+1}{\\sqrt x}$ 无从下手。', r: '写成 $y=x^{1/2}+x^{-1/2}$ 再用幂法则：$y\'=\\dfrac{x-1}{2x^{3/2}}$。', why: '幂法则配负指数能处理所有根式与倒数。' }
+  { sec: '3.2', t: '积法则写成两个导数相乘', w: '$(uv)\' = u\'v\'$。', r: '$(uv)\'=uv\'+vu\'$，是两项之和。', why: '课堂例题 $(3x^2-5)(2x^4-x)$：展开求导得 $36x^5-40x^3-9x^2+5$，与积法则结果一致。' },
+  { sec: '3.2', t: '商法则分子写反', w: '$(u/v)\'=\\dfrac{uv\'-vu\'}{v^2}$。', r: '分子是 $v u\'-u v\'$，顺序是"v 在前、u 在后"，各自配自己的导数。', why: '代入 $u=3x-5$、$v=x^2+7$ 可核对：$\\dfrac{3(x^2+7)-(3x-5)(2x)}{(x^2+7)^2}$。' },
+  { sec: '3.4', t: '链式法则漏乘内层导数', w: '$\\dfrac{d}{dx}(x^2+2x)^3=3(x^2+2x)^2$。', r: '必须再乘内层导数：$3(x^2+2x)^2(2x+2)$。', why: '这是本章最高频的扣分点，链式法则每层都要乘一个导数因子。' },
+  { sec: '3.4', t: '复合函数只拆一层', w: '$\\dfrac{d}{dx}\\sin^3(4x)=3\\sin^2(4x)\\cos(4x)$。', r: '三层要乘三份因子：$3\\sin^2(4x)\\cdot\\cos(4x)\\cdot4=12\\sin^2(4x)\\cos(4x)$。', why: '$\\sin[\\cos(x^2)]$ 要乘三份：$\\cos[\\cos(x^2)]\\cdot(-\\sin(x^2))\\cdot2x$。' },
+  { sec: '3.3', t: '三角导数公式当成了万能公式', w: '认为 $\\dfrac{d}{dx}\\sin ax=a\\cos ax$ 可以直接用。', r: '必须写成 $\\sin(ax)$ 再套链式法则：$\\dfrac{d}{dx}\\sin(ax)=\\cos(ax)\\cdot a$。', why: '$\\sin^3(4x)$ 与 $\\sin(4x)$ 是两回事。' },
+  { sec: '3.3', t: '忘了用弧度制', w: '直接套 $d/dx\\sin x=\\cos x$ 处理角度制数据。', r: '所有三角函数的导数公式只在弧度制下成立，角度制要多乘 $\\tfrac{\\pi}{180}$。', why: '课堂特别强调弧度制是默认前提。' },
+  { sec: '3.3', t: '特殊极限用错场合', w: '认为 $\\dfrac{\\sin3x}{x}=3$ 对任何 x 成立。', r: '$\\lim_{x\\to0}\\sin3x/x=3$ 只在 $x\\to0$ 时成立；远离 0 时要用 $\\sin u/u\\to1$ 的等价变形。', why: '证明依赖 $3x\\to0$。' },
+  { sec: '3.5', t: '隐函数求导把 y 当常数', w: '对 $y^3+7y=x^3$ 求导写成 $3y^2+7=3x^2$。', r: 'y 是 x 的函数，必须写 $3y^2y\'+7y\'=3x^2$，再解出 $y\'$。', why: '漏掉 y′ 就等于没求导。' },
+  { sec: '3.5', t: '水平切线求成切线斜率最大', w: '把"水平"理解成"最陡"。', r: '水平切线 ⇔ 斜率为 0 ⇔ $f\'(a)=0$；最陡对应 $|f\'|$ 最大。', why: '两问常在同一道题里对比出现。' },
+  { sec: '3.1', t: '根式不化成幂', w: '对 $y=\\dfrac{x+1}{\\sqrt x}$ 无从下手。', r: '写成 $y=x^{1/2}+x^{-1/2}$ 再用幂法则：$y\'=\\dfrac{x-1}{2x^{3/2}}$。', why: '幂法则配负指数能处理所有根式与倒数。' }
 ];
 
 /* ---------- 公式速查表（第 3 章） ---------- */
 const SHEET3 = [
-  { title: '3.1 求导基本法则', items: [
+  { ch: '3', title: '3.1 求导基本法则', items: [
     { lab: '幂法则', tex: '\\frac{d}{dx}x^n=nx^{n-1}\\quad (n\\in\\mathbb{R},\\ x>0)' },
     { lab: '常数与直线', tex: '\\frac{d}{dx}c=0,\\quad \\frac{d}{dx}x=1' },
     { lab: '线性法则', tex: 'D_x[kf]=kD_xf,\\quad D_x[f\\pm g]=D_xf\\pm D_xg' },
     { lab: '指数函数', tex: '\\frac{d}{dx}e^x=e^x,\\qquad \\frac{d}{dx}a^x=a^x\\ln a' },
     { lab: 'e 的定义', tex: 'e:\\ \\lim_{h\\to0}\\frac{e^h-1}{h}=1' }
   ]},
-  { title: '3.2 积与商', items: [
+  { ch: '3', title: '3.2 积与商', items: [
     { lab: '积法则', tex: '\\frac{d}{dx}(uv)=u\\frac{dv}{dx}+v\\frac{du}{dx}' },
     { lab: '商法则', tex: "\\frac{d}{dx}\\frac{u}{v}=\\frac{v\\frac{du}{dx}-u\\frac{dv}{dx}}{v^2}" },
     { lab: '检验法', tex: '\\text{乘积/商法则的结果应与"先展开再求导"一致}' }
   ]},
-  { title: '3.3 三角函数', items: [
+  { ch: '3', title: '3.3 三角函数', items: [
     { lab: '特殊极限', tex: '\\lim_{t\\to0}\\frac{\\sin t}{t}=1,\\qquad \\lim_{t\\to0}\\frac{1-\\cos t}{t}=0' },
     { lab: '面积比较', tex: '\\sin\\theta<\\theta<\\tan\\theta\\quad (0<\\theta<\\tfrac\\pi2)' },
     { lab: 'sin / cos', tex: '\\frac{d}{dx}\\sin x=\\cos x,\\quad \\frac{d}{dx}\\cos x=-\\sin x' },
@@ -160,12 +160,12 @@ const SHEET3 = [
     { lab: 'sec / csc', tex: '\\frac{d}{dx}\\sec x=\\sec x\\tan x,\\quad \\frac{d}{dx}\\csc x=-\\csc x\\cot x' },
     { lab: '前提', tex: '\\text{所有三角导数公式只在弧度制下成立}' }
   ]},
-  { title: '3.4 链式法则', items: [
+  { ch: '3', title: '3.4 链式法则', items: [
     { lab: '链式法则', tex: '(f\\circ g)\'(x)=f\'(g(x))\\cdot g\'(x)' },
     { lab: '微分写法', tex: '\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx}' },
     { lab: '多层复合', tex: '\\frac{d}{dx}\\sin^3(4x)=3\\sin^2(4x)\\cos(4x)\\cdot4' }
   ]},
-  { title: '3.5 隐函数', items: [
+  { ch: '3', title: '3.5 隐函数', items: [
     { lab: '规则', tex: '\\text{对 }x\\text{ 求导时，}y\\text{ 是 }x\\text{ 的函数，必须带 }y\'' },
     { lab: '例', tex: 'y^3+7y=x^3 \\Rightarrow y\'=\\frac{3x^2}{3y^2+7}' },
     { lab: '水平切线', tex: 'y\'=0 \\text{ 与原方程联立求解}' }

@@ -27,7 +27,7 @@ const T = LANG === 'en' ? {
   flashTag: 'Flashcard',
   answerTag: 'Answer',
   calcType: 'Computation',
-  allChapter: 'Chapters 2–3',
+  allChapter: (ch) => ch === '3' ? 'Chapter 3, all sections 3.1–3.7' : 'Chapter 2, all sections 2.1–2.8',
   timeLeft: (m, s) => `Time left ${m}:${s}`,
   quizProgress: (i, n) => `Question ${i} of ${n}`,
   selfCheck: 'Self-check:',
@@ -62,7 +62,20 @@ const T = LANG === 'en' ? {
   planLoad: 'Workload',
   planTierCta: 'Open this tab',
   planStepNo: 'Step',
-  hwTbd: 'not recorded in the lecture notes — confirm with the instructor'
+  hwTbd: 'not recorded in the lecture notes — confirm with the instructor',
+  ch2Name: 'Chapter 2',
+  ch2Sub: 'Limits & Derivatives · 2.1–2.8',
+  ch3Name: 'Chapter 3',
+  ch3Sub: 'Rules of Differentiation · 3.1–3.7',
+  chSwitch: 'Topic',
+  heroTitle2: 'Chapter 2 Revision Hub',
+  heroLede2: 'Limits and Derivatives — the full 2.1–2.8 syllabus map, concept checklist, flashcards, worked class examples, the assigned homework numbers, a random self-test and an exam sprint plan. Scoped to the Oct 06 – Oct 22 lecture notes.',
+  heroTitle3: 'Chapter 3 Revision Hub',
+  heroLede3: 'Rules of Differentiation — the full 3.1–3.7 syllabus map covering the differentiation rules, implicit and inverse trigonometric differentiation, logarithmic derivatives and rates of change, with worked class examples, assigned homework numbers, a random self-test and a sprint plan. Scoped to the Oct 27 – Oct 29 lecture notes.',
+  hwPending3: 'The Chapter 3 textbook statements are still being extracted. The assigned exercise numbers, the classroom examples with full solutions, and every concept, flashcard, trap and formula for Chapter 3 are already available.',
+  hwDone2: 'Every assigned problem from Chapter 2 of the textbook, with the answer and a step-by-step solution. Items marked "check" have an ambiguous formula in the PDF text layer — verify them against the printed page.',
+  planCross: 'Whole-exam sprint plan (use when both chapters are on the test)',
+  planCh3: 'Chapter 3 sprint plan (use when only Chapter 3 is on the test)'
 } : {
   all: '全部',
   hwCount: (n, d) => `${n} 道题 · 已完成 ${d} 道`,
@@ -83,7 +96,7 @@ const T = LANG === 'en' ? {
   flashTag: '记忆卡',
   answerTag: '答案',
   calcType: '计算题',
-  allChapter: '全章 2–3 章',
+  allChapter: (ch) => ch === '3' ? 'Chapter 3 全节 3.1–3.7' : 'Chapter 2 全节 2.1–2.8',
   timeLeft: (m, s) => `剩余 ${m}:${s}`,
   quizProgress: (i, n) => `第 ${i} / ${n} 题`,
   selfCheck: '对照后自评：',
@@ -118,10 +131,23 @@ const T = LANG === 'en' ? {
   planLoad: '投入',
   planTierCta: '打开对应页签',
   planStepNo: '步骤',
-  hwTbd: '课堂笔记未记录题号，需向老师确认'
+  hwTbd: '课堂笔记未记录题号，需向老师确认',
+  ch2Name: 'Chapter 2',
+  ch2Sub: '极限与导数 · 2.1–2.8',
+  ch3Name: 'Chapter 3',
+  ch3Sub: '求导法则 · 3.1–3.7',
+  chSwitch: '专题',
+  heroTitle2: 'Chapter 2 复习备考站',
+  heroLede2: 'Limits and Derivatives —— 2.1 到 2.8 的考点地图、概念速查、课堂例题精讲、作业题号分布与随机自测。范围严格对齐 Oct 06 – Oct 22 课堂笔记。',
+  heroTitle3: 'Chapter 3 复习备考站',
+  heroLede3: 'Rules of Differentiation —— 3.1 到 3.7 的求导法则、隐函数与逆三角函数、对数求导、变化率，附课堂例题精讲、作业题号分布、随机自测与冲刺方案。范围严格对齐 Oct 27 – Oct 29 课堂笔记。',
+  hwPending3: 'Chapter 3 的教材作业题原文正在提取中；已收录的作业题号、课堂例题与全部知识点可正常使用。',
+  hwDone2: 'Stewart 教材 Chapter 2 中老师布置的全部题目，题干为中英对照，附答案与解法；标有"核对"提示的条目表示 PDF 文本层有歧义，请对照书页确认。',
+  planCross: '全科冲刺方案（两章一起考时用）',
+  planCh3: 'Chapter 3 专题冲刺方案（只考第 3 章时用）'
 };
 
-/* ---------- 第 3 章内容合并 ---------- */
+/* ---------- 内容层合并（Chapter 3） ---------- */
 if (typeof SECTIONS3 !== 'undefined') {
   SECTIONS.push(...SECTIONS3);
   Object.assign(SCOPE_CARDS, SCOPE_CARDS3);
@@ -130,6 +156,32 @@ if (typeof SECTIONS3 !== 'undefined') {
   PITFALLS.push(...PITFALLS3);
   SHEET.push(...SHEET3);
   PROBLEMS.push(...PROBLEMS3);
+}
+if (typeof SECTIONS3B !== 'undefined') {
+  SECTIONS.push(...SECTIONS3B);
+  Object.assign(SCOPE_CARDS, SCOPE_CARDS3B);
+  CONCEPTS.push(...CONCEPTS3B);
+  FLASHCARDS.push(...FLASHCARDS3B);
+  PITFALLS.push(...PITFALLS3B);
+  SHEET.push(...SHEET3B);
+  PROBLEMS.push(...PROBLEMS3B);
+}
+
+/* ---------- 专题（Chapter）状态：Chapter 2 与 Chapter 3 并行 ---------- */
+const CH_KEY = 'calc_review_chapter_v1';
+let CHAPTER = (() => {
+  try {
+    const q = new URLSearchParams(location.search).get('ch');
+    if (q === '3' || q === '2') return q;
+    const v = localStorage.getItem(CH_KEY); return v === '3' ? '3' : '2';
+  } catch (e) { return '2'; }
+})();
+function chOf(sec) { return String(sec || '2').charAt(0); }
+function inCh(sec) { return chOf(sec) === CHAPTER; }
+function chSections() { return SECTIONS.filter(s => inCh(s.id)); }
+function setChapter(ch) {
+  CHAPTER = ch === '3' ? '3' : '2';
+  try { localStorage.setItem(CH_KEY, CHAPTER); } catch (e) {}
 }
 
 /* 数据文本转义：防止 LaTeX 中的 < > 被浏览器当作标签解析 */
@@ -211,29 +263,54 @@ function secName(s) {
   return LANG === 'zh' ? (s.cn || s.name || s.en || s.id) : (s.en || s.name || s.cn || s.id);
 }
 
+/* 事件只绑定一次：面板会在切换专题时反复重绘 */
+const _boundEls = new WeakSet();
+function bindOnce(el, ev, fn) {
+  if (!el || _boundEls.has(el)) return;
+  _boundEls.add(el);
+  el.addEventListener(ev, fn);
+}
+
 /* ---------- 教材作业题库 ---------- */
 let hwFilter = 'all';
 function hwKey(p) { return 'hw-' + p.sec + '-' + p.num; }
 function initHw() {
   const host = $('#hwFilters');
-  const hwSecs = SECTIONS.filter(s => HW_PROBLEMS.some(p => p.sec === s.id));
+  const hwSecs = SECTIONS.filter(s => inCh(s.id) && HW_PROBLEMS.some(p => p.sec === s.id));
   host.innerHTML = [`<button class="chip is-on" data-f="all">${T.all}</button>`]
     .concat(hwSecs.map(s => {
       const n = HW_PROBLEMS.filter(p => p.sec === s.id).length;
       return `<button class="chip" data-f="${s.id}">${s.id} (${n})</button>`;
     })).join('');
-  host.addEventListener('click', e => {
+  bindOnce(host, 'click', e => {
     const chip = e.target.closest('.chip'); if (!chip) return;
     $$('.chip', host).forEach(c => c.classList.toggle('is-on', c === chip));
     hwFilter = chip.dataset.f;
     renderHw();
   });
-  $('#hwExpandAll').addEventListener('click', () => $$('#hwList .p-card').forEach(c => c.classList.add('is-open')));
-  $('#hwCollapseAll').addEventListener('click', () => $$('#hwList .p-card').forEach(c => c.classList.remove('is-open')));
+  bindOnce($('#hwExpandAll'), 'click', () => $$('#hwList .p-card').forEach(c => c.classList.add('is-open')));
+  bindOnce($('#hwCollapseAll'), 'click', () => $$('#hwList .p-card').forEach(c => c.classList.remove('is-open')));
+  bindOnce($('#hwList'), 'click', e => {
+    const btn = e.target.closest('.js-hw-toggle'); if (!btn) return;
+    const card = btn.closest('.p-card');
+    const open = card.classList.toggle('is-open');
+    btn.textContent = open ? T.hideSol : T.showSol;
+  });
+  bindOnce($('#hwList'), 'change', e => {
+    const box = e.target.closest('.p-done input'); if (!box) return;
+    const k = box.closest('.p-card').dataset.k;
+    if (box.checked) { if (!PROGRESS.done.includes(k)) PROGRESS.done.push(k); }
+    else PROGRESS.done = PROGRESS.done.filter(x => x !== k);
+    saveProgress(PROGRESS);
+    box.closest('.p-done').classList.toggle('is-on', box.checked);
+    renderScope();
+    const list2 = HW_PROBLEMS.filter(p => inCh(p.sec) && (hwFilter === 'all' || p.sec === hwFilter));
+    $('#hwCount').textContent = T.hwCount(list2.length, list2.filter(p => PROGRESS.done.includes(hwKey(p))).length);
+  });
   renderHw();
 }
 function renderHw() {
-  const list = HW_PROBLEMS.filter(p => hwFilter === 'all' || p.sec === hwFilter);
+  const list = HW_PROBLEMS.filter(p => inCh(p.sec) && (hwFilter === 'all' || p.sec === hwFilter));
   const doneN = list.filter(p => PROGRESS.done.includes(hwKey(p))).length;
   $('#hwCount').textContent = T.hwCount(list.length, doneN);
   $('#hwList').innerHTML = list.map(p => {
@@ -260,30 +337,14 @@ function renderHw() {
         </div>
       </div></article>`;
   }).join('');
-  $('#hwList').addEventListener('click', e => {
-    const btn = e.target.closest('.js-hw-toggle'); if (!btn) return;
-    const card = btn.closest('.p-card');
-    const open = card.classList.toggle('is-open');
-    btn.textContent = open ? T.hideSol : T.showSol;
-  });
-  $('#hwList').addEventListener('change', e => {
-    const box = e.target.closest('.p-done input'); if (!box) return;
-    const k = box.closest('.p-card').dataset.k;
-    if (box.checked) { if (!PROGRESS.done.includes(k)) PROGRESS.done.push(k); }
-    else PROGRESS.done = PROGRESS.done.filter(x => x !== k);
-    saveProgress(PROGRESS);
-    box.closest('.p-done').classList.toggle('is-on', box.checked);
-    renderScope();
-    const list2 = HW_PROBLEMS.filter(p => hwFilter === 'all' || p.sec === hwFilter);
-    $('#hwCount').textContent = T.hwCount(list2.length, list2.filter(p => PROGRESS.done.includes(hwKey(p))).length);
-  });
   scheduleMath($('#hwList'));
 }
 
 /* ---------- 考纲地图 ---------- */
 function renderScope() {
   const host = $('#scopeMap');
-  host.innerHTML = SECTIONS.map(s => {
+  const secs = chSections();
+  host.innerHTML = secs.map(s => {
     const c = SCOPE_CARDS[s.id];
     const total = s.hw.length;
     const bank = PROBLEMS.filter(p => p.sec === s.id);
@@ -302,7 +363,7 @@ function renderScope() {
     </article>`;
   }).join('');
 
-  const rows = SECTIONS.map(s => {
+  const rows = secs.map(s => {
     const hwTotal = s.hw.length;
     const hwDone = HW_PROBLEMS.filter(p => p.sec === s.id && PROGRESS.done.includes(hwKey(p))).length;
     const bank = PROBLEMS.filter(p => p.sec === s.id);
@@ -315,10 +376,10 @@ function renderScope() {
   }).join('');
   $('#hwTable').innerHTML = `<div class="hw-row head"><span>${T.tableHead[0]}</span><span>${T.tableHead[1]}</span><span>${T.tableHead[2]}</span></div>` + rows;
 
-  const totalAll = SECTIONS.reduce((s, x) => s + x.hw.length, 0);
-  const bankTotal = PROBLEMS.length + HW_PROBLEMS.length;
-  const bankDone = PROBLEMS.filter(p => PROGRESS.done.includes(problemKey(p))).length
-                 + HW_PROBLEMS.filter(p => PROGRESS.done.includes(hwKey(p))).length;
+  const totalAll = secs.reduce((s, x) => s + x.hw.length, 0);
+  const bankTotal = PROBLEMS.filter(p => inCh(p.sec)).length + HW_PROBLEMS.filter(p => inCh(p.sec)).length;
+  const bankDone = PROBLEMS.filter(p => inCh(p.sec) && PROGRESS.done.includes(problemKey(p))).length
+                 + HW_PROBLEMS.filter(p => inCh(p.sec) && PROGRESS.done.includes(hwKey(p))).length;
   $('#heroStats').innerHTML = `
     <div><b>${SECTIONS.length}</b><span>${T.heroStats[0]}</span></div>
     <div><b>${totalAll}</b><span>${T.heroStats[1]}</span></div>
@@ -338,7 +399,7 @@ function updateRing(done, total) {
 
 /* ---------- 概念速查 ---------- */
 function renderConcepts() {
-  $('#conceptBody').innerHTML = CONCEPTS.map(block => {
+  $('#conceptBody').innerHTML = CONCEPTS.filter(b => inCh(b.sec)).map(block => {
     const items = block.items.map(it => {
       let html = `<div class="def-item"><div class="dt">${esc(it.dt)}</div><div class="dd">${esc(it.dd)}</div>`;
       if (it.formula) {
@@ -359,23 +420,24 @@ function renderConcepts() {
 /* ---------- 记忆卡 ---------- */
 let fcIndex = 0, fcOrder = [];
 function initFlashcards() {
-  fcOrder = FLASHCARDS.map((_, i) => i);
+  fcOrder = FLASHCARDS.map((_, i) => i).filter(i => inCh(FLASHCARDS[i].tag));
+  if (!fcOrder.length) fcOrder = [0];
   const t = $('#flash');
-  t.addEventListener('click', () => t.classList.toggle('is-flipped'));
-  $('#flashNext').addEventListener('click', () => moveCard(1));
-  $('#flashPrev').addEventListener('click', () => moveCard(-1));
-  $('#flashKnown').addEventListener('click', () => {
+  bindOnce(t, 'click', () => t.classList.toggle('is-flipped'));
+  bindOnce($('#flashNext'), 'click', () => moveCard(1));
+  bindOnce($('#flashPrev'), 'click', () => moveCard(-1));
+  bindOnce($('#flashKnown'), 'click', () => {
     const c = FLASHCARDS[fcOrder[fcIndex]];
     PROGRESS.weak = PROGRESS.weak.filter(k => k !== c.tag + '|' + c.q);
     saveProgress(PROGRESS); moveCard(1);
   });
-  $('#flashAgain').addEventListener('click', () => {
+  bindOnce($('#flashAgain'), 'click', () => {
     const c = FLASHCARDS[fcOrder[fcIndex]];
     if (!PROGRESS.weak.includes(c.tag + '|' + c.q)) PROGRESS.weak.push(c.tag + '|' + c.q);
     saveProgress(PROGRESS);
     moveCard(1);
   });
-  document.addEventListener('keydown', e => {
+  bindOnce(document, 'keydown', e => {
     if (!$('#view-cards').classList.contains('is-active')) return;
     if (e.key === 'ArrowRight') moveCard(1);
     if (e.key === 'ArrowLeft') moveCard(-1);
@@ -402,24 +464,26 @@ function problemKey(p) { return p.sec + '-' + p.num; }
 function initPractice() {
   const host = $('#practiceFilters');
   host.innerHTML = [`<button class="chip is-on" data-f="all">${T.all}</button>`]
-    .concat(SECTIONS.map(s => `<button class="chip" data-f="${s.id}">${s.id} ${esc(secName(s))}</button>`))
+    .concat(chSections().map(s => `<button class="chip" data-f="${s.id}">${s.id} ${esc(secName(s))}</button>`))
     .join('');
-  host.addEventListener('click', e => {
+  bindOnce(host, 'click', e => {
     const chip = e.target.closest('.chip'); if (!chip) return;
     $$('.chip', host).forEach(c => c.classList.toggle('is-on', c === chip));
     practiceFilter = chip.dataset.f;
     renderProblems();
   });
-  $('#expandAll').addEventListener('click', () => $$('.p-card').forEach(c => c.classList.add('is-open')));
-  $('#collapseAll').addEventListener('click', () => $$('.p-card').forEach(c => c.classList.remove('is-open')));
-  $('#resetProgress').addEventListener('click', () => {
+  bindOnce($('#expandAll'), 'click', () => $$('#problemList .p-card').forEach(c => c.classList.add('is-open')));
+  bindOnce($('#collapseAll'), 'click', () => $$('#problemList .p-card').forEach(c => c.classList.remove('is-open')));
+  bindOnce($('#resetProgress'), 'click', () => {
     PROGRESS = { done: [], weak: [] }; saveProgress(PROGRESS);
     renderProblems(); renderScope();
   });
+  bindOnce($('#problemList'), 'click', onProblemClick);
+  bindOnce($('#problemList'), 'change', onProblemChange);
   renderProblems();
 }
 function renderProblems() {
-  const list = PROBLEMS.filter(p => practiceFilter === 'all' || p.sec === practiceFilter);
+  const list = PROBLEMS.filter(p => inCh(p.sec) && (practiceFilter === 'all' || p.sec === practiceFilter));
   $('#practiceCount').textContent = T.hwCount(list.length, PROGRESS.done.filter(k => list.some(p => problemKey(p) === k)).length);
   $('#problemList').innerHTML = list.map(p => {
     const k = problemKey(p);
@@ -445,8 +509,6 @@ function renderProblems() {
       </div></article>`;
   }).join('');
 
-  $('#problemList').addEventListener('click', onProblemClick);
-  $('#problemList').addEventListener('change', onProblemChange);
   scheduleMath($('#problemList'));
 }
 function onProblemClick(e) {
@@ -463,7 +525,7 @@ function onProblemChange(e) {
   saveProgress(PROGRESS);
   box.closest('.p-done').classList.toggle('is-on', box.checked);
   renderScope();
-  const list = PROBLEMS.filter(p => practiceFilter === 'all' || p.sec === practiceFilter);
+  const list = PROBLEMS.filter(p => inCh(p.sec) && (practiceFilter === 'all' || p.sec === practiceFilter));
   $('#practiceCount').textContent = T.hwCount(list.length, PROGRESS.done.filter(x => list.some(p => problemKey(p) === x)).length);
 }
 
@@ -471,13 +533,12 @@ function onProblemChange(e) {
 let quiz = null;
 function initQuiz() {
   const sel = $('#quizScope');
-  sel.innerHTML = `<option value="all">${T.allChapter}</option>` +
-    SECTIONS.map(s => `<option value="${s.id}">${s.id} ${esc(secName(s))}</option>`).join('');
-  $('#quizStart').addEventListener('click', startQuiz);
-  $('#quizNext').addEventListener('click', () => stepQuiz(1));
-  $('#quizPrev').addEventListener('click', () => stepQuiz(-1));
-}
-function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; } return a; }
+  sel.innerHTML = `<option value="all">${T.allChapter(CHAPTER)}</option>` +
+    chSections().map(s => `<option value="${s.id}">${s.id} ${esc(secName(s))}</option>`).join('');
+  bindOnce($('#quizStart'), 'click', startQuiz);
+  bindOnce($('#quizNext'), 'click', () => stepQuiz(1));
+  bindOnce($('#quizPrev'), 'click', () => stepQuiz(-1));
+}function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; } return a; }
 function numericAnswer(s) {
   if (!s) return null;
   const t = s.replace(/\$|\\,|\\;|\\!|\s|\\left|\\right|\\displaystyle/g, '').trim();
@@ -510,7 +571,7 @@ function makeOptions(p, pool) {
 function startQuiz() {
   const n = Number($('#quizNum').value);
   const scope = $('#quizScope').value;
-  const pool = PROBLEMS.concat(HW_PROBLEMS).filter(p => scope === 'all' || p.sec === scope);
+  const pool = PROBLEMS.concat(HW_PROBLEMS).filter(p => inCh(p.sec) && (scope === 'all' || p.sec === scope));
   const picked = shuffle(pool.slice()).slice(0, Math.min(n, pool.length));
   quiz = {
     pool,
@@ -614,7 +675,7 @@ function finishQuiz() {
 
 /* ---------- 易错点 ---------- */
 function renderPitfalls() {
-  $('#pitfallList').innerHTML = PITFALLS.map((p, i) => `
+  $('#pitfallList').innerHTML = PITFALLS.filter(p => inCh(p.sec || '2')).map((p, i) => `
     <article class="pit">
       <div class="ph"><span class="num">#${String(i + 1).padStart(2, '0')}</span><h4>${esc(p.t)}</h4></div>
       <div class="wrong math"><span class="k">${T.pitfallWrong}</span>${esc(p.w)}</div>
@@ -626,18 +687,17 @@ function renderPitfalls() {
 
 /* ---------- 公式速查表 ---------- */
 function renderSheet() {
-  $('#sheetBody').innerHTML = SHEET.map(col => `
+  $('#sheetBody').innerHTML = SHEET.filter(c => (c.ch || '2') === CHAPTER).map(col => `
     <div class="sh-col">
       <h3>${col.title}</h3>
       ${col.items.map(it => `<div class="sh-item"><span class="lab">${esc(it.lab)}</span><div class="math">$${esc(it.tex)}$</div></div>`).join('')}
     </div>`).join('');
   scheduleMath($('#sheetBody'));
-  $('#printSheet').addEventListener('click', () => window.print());
+  bindOnce($('#printSheet'), 'click', () => window.print());
 }
 
 /* ---------- 考试冲刺方案 ---------- */
-function renderPlan() {
-  const p = PLAN;
+function planBlock(p, title) {
   const tiers = p.tiers.map(t => `
     <article class="plan-tier">
       <div class="pt-head"><span class="pt-id">${esc(t.id)}</span><h4>${esc(t.title)}</h4></div>
@@ -659,17 +719,66 @@ function renderPlan() {
   const last = p.last10.map((s, i) => `
     <li class="l10"><span>${String(i + 1).padStart(2, '0')}</span><div>${esc(s)}</div></li>`).join('');
 
-  $('#planBody').innerHTML = `
-    <p class="plan-headline">${esc(p.headline)}</p>
-    <div class="section-head tight"><h2>${T.planTiers}</h2></div>
-    <div class="plan-tiers">${tiers}</div>
-    <div class="section-head"><h2>${T.planLoop}</h2></div>
-    <ol class="plan-loop">${loop}</ol>
-    <div class="section-head"><h2>${T.planTriage}</h2></div>
-    <div class="plan-triage">${triage}</div>
-    <div class="section-head"><h2>${T.planLast}</h2></div>
-    <ul class="plan-last">${last}</ul>`;
+  return `
+    <div class="plan-block">
+      <div class="section-head"><h2>${esc(title)}</h2></div>
+      <p class="plan-headline">${esc(p.headline)}</p>
+      <div class="section-head tight"><h3>${T.planTiers}</h3></div>
+      <div class="plan-tiers">${tiers}</div>
+      <div class="section-head"><h3>${T.planLoop}</h3></div>
+      <ol class="plan-loop">${loop}</ol>
+      <div class="section-head"><h3>${T.planTriage}</h3></div>
+      <div class="plan-triage">${triage}</div>
+      <div class="section-head"><h3>${T.planLast}</h3></div>
+      <ul class="plan-last">${last}</ul>
+    </div>`;
+}
+function renderPlan() {
+  let html = planBlock(PLAN, T.planCross);
+  if (typeof PLAN3 !== 'undefined') html += planBlock(PLAN3, T.planCh3);
+  $('#planBody').innerHTML = html;
   scheduleMath($('#planBody'));
+}
+
+/* ---------- 专题切换（Chapter 2 / Chapter 3 并行） ---------- */
+function renderChapterSwitch() {
+  const host = $('#chSwitch');
+  if (!host) return;
+  const items = [
+    { ch: '2', name: T.ch2Name, sub: T.ch2Sub },
+    { ch: '3', name: T.ch3Name, sub: T.ch3Sub }
+  ];
+  host.innerHTML = items.map(i => `
+    <button class="ch-btn${CHAPTER === i.ch ? ' is-on' : ''}" data-ch="${i.ch}">
+      <span class="ch-name">${esc(i.name)}</span><span class="ch-sub">${esc(i.sub)}</span>
+    </button>`).join('');
+  host.onclick = e => {
+    const btn = e.target.closest('.ch-btn'); if (!btn) return;
+    if (btn.dataset.ch === CHAPTER) return;
+    setChapter(btn.dataset.ch);
+    applyChapter();
+  };
+}
+function applyChapter() {
+  renderChapterSwitch();
+  $('#heroTitle').textContent = CHAPTER === '3' ? T.heroTitle3 : T.heroTitle2;
+  $('#heroLede').textContent = CHAPTER === '3' ? T.heroLede3 : T.heroLede2;
+  $('#hwNote').textContent = CHAPTER === '3' ? T.hwPending3 : T.hwDone2;
+  $('#hwNoteWrap').hidden = false;
+  document.body.dataset.chapter = CHAPTER;
+  // 重置各板块筛选并重绘
+  hwFilter = 'all';
+  practiceFilter = 'all';
+  quiz = null;
+  initHw();
+  initPractice();
+  initQuiz();
+  initFlashcards();
+  renderScope();
+  renderConcepts();
+  renderPitfalls();
+  renderSheet();
+  renderPlan();
 }
 
 /* ---------- 图标 ---------- */
@@ -689,15 +798,7 @@ function initRail() {
 /* ---------- 启动 ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   initTabs();
-  renderScope();
-  renderConcepts();
-  initFlashcards();
-  initHw();
-  initPractice();
-  initQuiz();
-  renderPitfalls();
-  renderSheet();
-  renderPlan();
+  applyChapter();
   initRail();
   window.addEventListener('load', () => renderMath(document.body));
   setTimeout(() => renderMath(document.body), 1200);

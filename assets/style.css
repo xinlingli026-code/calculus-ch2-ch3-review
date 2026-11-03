@@ -217,10 +217,24 @@ select{font-family:inherit;font-size:13.5px;color:var(--ink);background:var(--su
 .sh-item{margin-bottom:11px;font-size:13.4px}
 .sh-item .lab{color:var(--muted);font-size:12px;display:block;margin-bottom:2px}
 
+/* ---------- chapter switch (two parallel topics) ---------- */
+.chswitch-wrap{display:flex;align-items:center;gap:12px;margin:0 0 20px;flex-wrap:wrap}
+.chswitch-label{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.chswitch{display:inline-flex;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:4px;box-shadow:var(--shadow)}
+.ch-btn{display:flex;flex-direction:column;align-items:flex-start;gap:2px;border:0;background:none;border-radius:9px;padding:8px 16px;cursor:pointer;text-align:left;transition:background .16s,box-shadow .16s}
+.ch-btn:hover{background:#f4f6f9}
+.ch-btn.is-on{background:var(--primary);box-shadow:0 1px 6px rgba(59,130,246,.28)}
+.ch-name{font-size:14px;font-weight:600;color:var(--ink);line-height:1.25}
+.ch-sub{font-size:11.5px;color:var(--muted);line-height:1.3}
+.ch-btn.is-on .ch-name{color:#fff}
+.ch-btn.is-on .ch-sub{color:rgba(255,255,255,.82)}
+
 .foot{border-top:1px solid var(--line);padding:22px 24px;text-align:center;color:var(--muted);font-size:12px;background:#f6f7f9}
 
 /* ---------- exam sprint plan ---------- */
 .plan-headline{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--primary);border-radius:12px;padding:14px 18px;font-size:14.2px;color:var(--ink);margin:0 0 26px;box-shadow:var(--shadow)}
+.plan-block+.plan-block{margin-top:44px;padding-top:30px;border-top:1px solid var(--line)}
+.section-head h3{font-size:17px;margin-bottom:10px;color:var(--ink)}
 .section-head.tight{margin:0 0 16px}
 .plan-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
 .plan-tier{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column}
