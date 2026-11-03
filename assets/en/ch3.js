@@ -319,15 +319,15 @@ const PROBLEMS3 = [
    Exam sprint plan
    ============================================================ */
 const PLAN = {
-  headline: 'Two chapters together: absorb the new 3.3–3.5 material first, then weave the Chapter 2 core back in with a three-tier schedule.',
+  headline: 'Two chapters together: absorb the new Chapter 3 material (3.1–3.7) first, then weave the Chapter 2 core back in with a three-tier schedule.',
   tiers: [
     { id: 'A', title: 'Tier A · 48 hours before the exam (rescue)', when: 'Only 2 days left', goal: 'Walk both chapters’ must-know lists once and expose every problem type you still cannot do',
       minutes: 'About 4–5 hours in total',
       steps: [
-        'Round 1 (≈90 min): open Concept Checklist and read only the five Chapter 3 sections (3.1–3.5); mark anything you cannot state',
-        'Round 2 (≈60 min): in Homework Bank filter 3.3 / 3.4 / 3.5 and do five problems from each; write the steps, don\'t worry about a perfect score',
+        'Round 1 (≈90 min): open Concept Checklist and read only the seven Chapter 3 sections (3.1–3.7); mark anything you cannot state',
+        'Round 2 (≈60 min): in Homework Bank filter 3.3 / 3.4 / 3.5 / 3.6 and do five problems from each; write the steps, don\'t worry about a perfect score',
         'Round 3 (≈60 min): for every mistake, go back to Worked Examples and read the matching classroom example',
-        'Round 4 (≈45 min): Random Self-Test — scope 3.3–3.5, 15 questions, no timer; then read the explanations of what you missed',
+        'Round 4 (≈45 min): Random Self-Test — scope Chapter 3, 15 questions, no timer; then read the explanations of what you missed',
         'Round 5 (≈30 min): print the Formula Sheet and hand-copy the Chapter 3 rule boxes (copying beats reading)',
         'Finish: only revisit sections you marked "no idea" — do not start new problems'
       ] },
