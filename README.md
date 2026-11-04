@@ -2,10 +2,10 @@
 
 > A bilingual (中文 / English) static study site for **Stewart, *Calculus: Early Transcendentals*** —
 > the full syllabus map, concept checklist, flashcards, worked class examples, a random self-test
-> and a three-tier exam sprint plan for **Chapter 2 (2.1–2.8) and Chapter 3 (3.1–3.5)**.
+> and a three-tier exam sprint plan for **Chapter 2 (2.1–2.8) and Chapter 3 (3.1–3.11)**.
 >
 > 一个中英双语的纯静态复习网站：考纲地图、概念速查、记忆卡、课堂例题精讲、随机自测，
-> 以及一套「考前冲刺方案」。范围严格对齐课堂笔记（NotesOnOct06 – NotesOnOct27）。
+> 以及一套「考前冲刺方案」。范围严格对齐课堂笔记（NotesOnOct06 – NotesOnNov03）。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Pages](https://img.shields.io/badge/Pages-live-brightgreen.svg)](https://xinlingli026-code.github.io/calculus-ch2-ch3-review/)
@@ -37,10 +37,11 @@
 │   ├── data.js             中文 Chapter 2 内容层：考纲 / 概念 / 记忆卡 / 易错点 / 公式表
 │   ├── problems.js         中文 Chapter 2 课堂例题 (52)
 │   ├── hw.js               中文 Chapter 2 教材作业题库 (107)
-│   ├── ch3.js              中文 Chapter 3 前半段内容层 (3.1–3.5) + 全科冲刺方案 PLAN
-│   ├── ch3b.js             中文 Chapter 3 后半段内容层 (3.5–3.7) + Chapter 3 专题冲刺方案 PLAN3
+│   ├── ch3.js              中文 Chapter 3 内容层 A (3.1–3.5) + 全科冲刺方案 PLAN
+│   ├── ch3b.js             中文 Chapter 3 内容层 B (3.5–3.7) + Chapter 3 专题冲刺方案 PLAN3
+│   ├── ch3c.js             中文 Chapter 3 内容层 C (3.9–3.11) + 教材作业题库 HW3C
 │   └── en/                 英文内容层（与中文版共用同一套交互逻辑）
-│       ├── data.js  problems.js  hw.js  hw2.js  ch3.js  ch3b.js
+│       ├── data.js  problems.js  hw.js  hw2.js  ch3.js  ch3b.js  ch3c.js
 ├── LICENSE                 MIT
 ├── SECURITY.md             安全策略与漏洞报告方式
 ├── CONTRIBUTING.md         贡献指南
@@ -57,14 +58,14 @@
 
 | 页签 | 中文 | English | Chapter 2 | Chapter 3 |
 |---|---|---|---|---|
-| 考纲地图 | ✓ | Syllabus | 8 个考点 2.1–2.8 | 7 个考点 3.1–3.7 |
-| 概念速查 | ✓ | Concepts | 8 个知识块 | 8 个知识块 |
-| 记忆卡 | ✓ | Flashcards | 26 张 | 33 张 |
-| 教材作业 | ✓ | Homework | 107 道（题干+答案） | 题号已收录，题干补充中 |
-| 刷题 | ✓ | Examples | 52 道课堂例题 | 57 道课堂例题 |
+| 考纲地图 | ✓ | Syllabus | 8 个考点 2.1–2.8 | 10 个考点 3.1–3.11 |
+| 概念速查 | ✓ | Concepts | 8 个知识块 | 11 个知识块 |
+| 记忆卡 | ✓ | Flashcards | 26 张 | 67 张 |
+| 教材作业 | ✓ | Homework | 107 道（题干+答案） | 17 道（3.9–3.11 全题含步骤，3.1–3.8 题号已收录） |
+| 刷题 | ✓ | Examples | 52 道课堂例题 | 70 道课堂例题 |
 | 随机自测 | ✓ | Self-Test | 限时抽题、判分、错题回看 | 同左 |
-| 易错点 | ✓ | Traps | 14 条 | 20 条 |
-| 公式速查表 | ✓ | Formulas | 5 列 | 8 列 |
+| 易错点 | ✓ | Traps | 14 条 | 30 条 |
+| 公式速查表 | ✓ | Formulas | 5 列 | 11 列 |
 | 冲刺方案 | ✓ | Sprint Plan | 全科方案 + Chapter 3 专题方案 | 同左 |
 
 **语言切换**：两版共用一套交互逻辑，内容层分离；学习进度通过 `localStorage`
@@ -104,7 +105,7 @@ python -m http.server 8000
 
 ## 内容来源 · Content provenance
 
-- 课堂笔记 NotesOnOct06 – NotesOnOct27（知识点、作业题号、课堂例题）
+- 课堂笔记 NotesOnOct06 – NotesOnNov03（知识点、作业题号、课堂例题）
 - 教材：Stewart, *Calculus: Early Transcendentals*, 8th ed., Brooks/Cole 2016（章节结构与题号）
 - 所有答案与解题步骤均为本项目自行推导，并与课堂笔记中的教师答案交叉验证
 

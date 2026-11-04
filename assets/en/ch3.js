@@ -319,13 +319,13 @@ const PROBLEMS3 = [
    Exam sprint plan
    ============================================================ */
 const PLAN = {
-  headline: 'Two chapters together: absorb the new Chapter 3 material (3.1–3.7) first, then weave the Chapter 2 core back in with a three-tier schedule.',
+  headline: 'Two chapters together: absorb the new Chapter 3 material (3.1–3.11) first, then weave the Chapter 2 core back in with a three-tier schedule.',
   tiers: [
     { id: 'A', title: 'Tier A · 48 hours before the exam (rescue)', when: 'Only 2 days left', goal: 'Walk both chapters’ must-know lists once and expose every problem type you still cannot do',
       minutes: 'About 4–5 hours in total',
       steps: [
-        'Round 1 (≈90 min): open Concept Checklist and read only the seven Chapter 3 sections (3.1–3.7); mark anything you cannot state',
-        'Round 2 (≈60 min): in Homework Bank filter 3.3 / 3.4 / 3.5 / 3.6 and do five problems from each; write the steps, don\'t worry about a perfect score',
+        'Round 1 (≈90 min): open Concept Checklist and read only the ten Chapter 3 syllabus cards (3.1–3.11); mark anything you cannot state',
+        'Round 2 (≈60 min): in Homework Bank filter 3.3 / 3.4 / 3.5 / 3.6 / 3.9 / 3.10 and do five problems from each; write the steps, do not worry about a perfect score',
         'Round 3 (≈60 min): for every mistake, go back to Worked Examples and read the matching classroom example',
         'Round 4 (≈45 min): Random Self-Test — scope Chapter 3, 15 questions, no timer; then read the explanations of what you missed',
         'Round 5 (≈30 min): print the Formula Sheet and hand-copy the Chapter 3 rule boxes (copying beats reading)',
@@ -339,15 +339,15 @@ const PLAN = {
         'Day 3: Chapter 3 sections 3.1 / 3.2 — power, product and quotient rules; volume of computation, so compute a lot',
         'Day 4: Chapter 3 section 3.3 — write the four trigonometric derivative formulas from memory three times, plus five special-limit problems',
         'Day 5: Chapter 3 sections 3.4 / 3.5 — layered chain-rule practice and the implicit differentiation template',
-        'Day 6: timed mock — Random Self-Test, whole chapter, 30 questions, 30-minute timer, exam conditions',
-        'Day 7: errors only — redo every mistake, copy the Formula Sheet by hand, walk the Common Traps list',
+        'Day 6: Chapter 3 sections 3.6 / 3.7 / 3.9 / 3.10 / 3.11 — logarithmic derivatives, rates of change, the five-step related-rates method, linear approximation and hyperbolic functions',
+        'Day 7: timed mock — Random Self-Test, whole chapter, 30 questions, 30-minute timer, exam conditions; afterwards redo only the errors, copy the Formula Sheet by hand and walk the Common Traps list',
         'Daily template: Concept Checklist 10 min → Homework 30 min → error review 15 min → Random Self-Test 15 min'
       ] },
     { id: 'C', title: 'Tier C · 30 minutes before you walk in', when: 'On the day', goal: 'Wake up the formulas and the traps; do not touch new problems',
       minutes: '30 minutes',
       steps: [
-        '8 min: Formula Sheet — scan only the five Chapter 3 rule boxes and the two special limits',
-        '10 min: Common Traps — read the ten Chapter 3 items (missing inner derivative, product rule as a product, missing y′, radians, …)',
+        '8 min: Formula Sheet — scan only the Chapter 3 rule boxes and the two special limits',
+        '10 min: Common Traps — read the twenty Chapter 3 items (missing inner derivative, product rule as a product, missing y′, radians, substituting numbers into a related-rates equation too early, dy passed off as Δy, …)',
         '7 min: redo the three problems you got wrong last night, writing only the key step',
         '5 min: sanity check — trigonometric formulas assume radians; $\\lim\\sin t/t=1$ holds only as $t\\to0$; a horizontal tangent means $f\'=0$',
         'Remaining time: breathe, do not open new problems'

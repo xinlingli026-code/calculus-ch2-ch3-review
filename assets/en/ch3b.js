@@ -231,16 +231,16 @@ const PROBLEMS3B = [
    Sprint plan for the Chapter 3 topic
    ============================================================ */
 const PLAN3 = {
-  headline: 'Use this one if the exam only covers Chapter 3: seven sections, two hot spots (3.4 chain rule, 3.5 implicit and inverse trig), and one timed mock.',
+  headline: 'Use this one if the exam only covers Chapter 3: eleven sections, three hot spots (3.4 chain rule, 3.5 implicit and inverse trig, 3.9–3.11 related rates and linear approximation), and one timed mock.',
   tiers: [
     { id: 'A3', title: 'Tier A · 48 hours before the exam (Chapter 3)', when: 'Only 2 days left', goal: 'Rewrite every derivative formula from 3.1–3.7 from memory and work through all assigned homework',
       minutes: '3–4 hours total',
       steps: [
         'Round 1 (60 min): open Concept Checklist and read only the 3.1–3.7 formula boxes, writing each formula out by hand and marking the wrong ones in red',
-        'Round 2 (60 min): open Homework and work in the order 3.3 → 3.4 → 3.5 → 3.6, three problems per section first, solutions collapsed by default',
-        'Round 3 (45 min): focus on 3.5 implicit and inverse trig — the section where marks are lost most easily; note the problem numbers you cannot do',
+        'Round 2 (60 min): open Homework and work in the order 3.3 → 3.4 → 3.5 → 3.6 → 3.9 → 3.10, three problems per section first, solutions collapsed by default',
+        'Round 3 (45 min): focus on 3.5 implicit and inverse trig — the section where marks are lost most easily; then do 3.9 related rates and 3.10 linear approximation, writing the variable relationship down in full each time',
         'Round 4 (30 min): open Self-Test, scope Chapter 3, 15 questions, untimed, then read the wrong-answer solutions',
-        'Round 5 (20 min): print the Formula Sheet and copy only the 3.5 / 3.6 / 3.7 columns by hand',
+        'Round 5 (20 min): print the Formula Sheet and copy only the 3.5 / 3.6 / 3.7 / 3.9 / 3.10 / 3.11 columns by hand',
         'Wrap up: review only the formulas and problems you marked in red — no new problems'
       ] },
     { id: 'B3', title: 'Tier B · 5 days before the exam (Chapter 3)', when: 'A week left, but only Chapter 3 is examined', goal: 'Every formula written from memory, every assigned problem attempted, one timed mock',
@@ -251,13 +251,13 @@ const PLAN3 = {
         'Day 3: 3.4 chain rule — drill the "unwrap one layer at a time" method',
         'Day 4: 3.5 implicit and inverse trig — memorise the implicit template, the three inverse formulas, and the tangent/horizontal-tangent problems',
         'Day 5: 3.6 + 3.7 — logarithmic derivatives (including taking logs for xˣ) and the rates-of-change problem, then a timed mock of 20 questions in 25 minutes',
-        'Wrap up: wrong problems only, plus one handwritten pass over the formula sheet and the trap list'
+        'Day 6: Chapter 3 sections 3.9 / 3.10 / 3.11 — the five-step related-rates method, linear approximation and error estimates, and the hyperbolic function formulas'
       ] },
     { id: 'C3', title: 'Tier C · 30 minutes before you walk in (Chapter 3)', when: 'Right before the exam', goal: 'Wake up the formulas and the traps — no new problems',
       minutes: '30 minutes',
       steps: [
-        '8 minutes: Formula Sheet, only the 3.5 / 3.6 / 3.7 columns',
-        '10 minutes: Common Traps, only the ten Chapter 3 entries (arcsin sign, missing ln a, xˣ, distance vs displacement…)',
+        '8 minutes: Formula Sheet, only the 3.5 / 3.6 / 3.7 / 3.9 / 3.10 / 3.11 columns',
+        '10 minutes: Common Traps, only the twenty Chapter 3 entries (arcsin sign, missing ln a, xˣ, distance vs displacement, substituting numbers into a related-rates equation too early, dy passed off as Δy…)',
         '7 minutes: redo the three problems you got wrong last night, writing only the key step',
         '5 minutes: confirm the basics — trig in radians; lim sin t/t = 1 only as t→0; horizontal tangent ⇔ f′ = 0; speeding up means v and a share a sign',
         'Remaining time: breathe, do not start new problems'
@@ -288,6 +288,9 @@ const PLAN3 = {
     'Collect the y′ terms after implicit differentiation',
     'A second derivative also carries a y′ (chain rule)',
     'Distance = sum of |displacement|, not the difference',
-    'Speeding up is about signs of v and a, not the sign of a'
+    'Speeding up is about signs of v and a, not the sign of a',
+    'Related rates: differentiate with respect to t first, substitute numbers afterwards',
+    'dy is the approximation, Δy is the actual change',
+    'The hyperbolic identity is cosh² − sinh² = 1 (minus sign)'
   ]
 };
