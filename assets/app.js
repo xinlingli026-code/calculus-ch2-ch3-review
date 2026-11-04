@@ -27,7 +27,7 @@ const T = LANG === 'en' ? {
   flashTag: 'Flashcard',
   answerTag: 'Answer',
   calcType: 'Computation',
-  allChapter: (ch) => ch === '3' ? 'Chapter 3, all sections 3.1–3.7' : 'Chapter 2, all sections 2.1–2.8',
+  allChapter: (ch) => ch === '3' ? 'Chapter 3, all sections 3.1–3.11' : 'Chapter 2, all sections 2.1–2.8',
   timeLeft: (m, s) => `Time left ${m}:${s}`,
   quizProgress: (i, n) => `Question ${i} of ${n}`,
   selfCheck: 'Self-check:',
@@ -66,13 +66,13 @@ const T = LANG === 'en' ? {
   ch2Name: 'Chapter 2',
   ch2Sub: 'Limits & Derivatives · 2.1–2.8',
   ch3Name: 'Chapter 3',
-  ch3Sub: 'Rules of Differentiation · 3.1–3.7',
+  ch3Sub: 'Rules of Differentiation · 3.1–3.11',
   chSwitch: 'Topic',
   heroTitle2: 'Chapter 2 Revision Hub',
   heroLede2: 'Limits and Derivatives — the full 2.1–2.8 syllabus map, concept checklist, flashcards, worked class examples, the assigned homework numbers, a random self-test and an exam sprint plan. Scoped to the Oct 06 – Oct 22 lecture notes.',
   heroTitle3: 'Chapter 3 Revision Hub',
   heroLede3: 'Rules of Differentiation — the full 3.1–3.7 syllabus map covering the differentiation rules, implicit and inverse trigonometric differentiation, logarithmic derivatives and rates of change, with worked class examples, assigned homework numbers, a random self-test and a sprint plan. Scoped to the Oct 27 – Oct 29 lecture notes.',
-  hwPending3: 'The Chapter 3 textbook statements are still being extracted. The assigned exercise numbers, the classroom examples with full solutions, and every concept, flashcard, trap and formula for Chapter 3 are already available.',
+  hwPending3: 'Chapter 3 homework: sections 3.9–3.11 now include the full statements, answers and solutions. For 3.1–3.8 the assigned exercise numbers are listed in full, but the statements are still to be added. Every concept, flashcard, trap, formula and classroom example for Chapter 3 is available now.',
   hwDone2: 'Every assigned problem from Chapter 2 of the textbook, with the answer and a step-by-step solution. Items marked "check" have an ambiguous formula in the PDF text layer — verify them against the printed page.',
   planCross: 'Whole-exam sprint plan (use when both chapters are on the test)',
   planCh3: 'Chapter 3 sprint plan (use when only Chapter 3 is on the test)'
@@ -96,7 +96,7 @@ const T = LANG === 'en' ? {
   flashTag: '记忆卡',
   answerTag: '答案',
   calcType: '计算题',
-  allChapter: (ch) => ch === '3' ? 'Chapter 3 全节 3.1–3.7' : 'Chapter 2 全节 2.1–2.8',
+  allChapter: (ch) => ch === '3' ? 'Chapter 3 全节 3.1–3.11' : 'Chapter 2 全节 2.1–2.8',
   timeLeft: (m, s) => `剩余 ${m}:${s}`,
   quizProgress: (i, n) => `第 ${i} / ${n} 题`,
   selfCheck: '对照后自评：',
@@ -135,13 +135,13 @@ const T = LANG === 'en' ? {
   ch2Name: 'Chapter 2',
   ch2Sub: '极限与导数 · 2.1–2.8',
   ch3Name: 'Chapter 3',
-  ch3Sub: '求导法则 · 3.1–3.7',
+  ch3Sub: '求导法则 · 3.1–3.11',
   chSwitch: '专题',
   heroTitle2: 'Chapter 2 复习备考站',
   heroLede2: 'Limits and Derivatives —— 2.1 到 2.8 的考点地图、概念速查、课堂例题精讲、作业题号分布与随机自测。范围严格对齐 Oct 06 – Oct 22 课堂笔记。',
   heroTitle3: 'Chapter 3 复习备考站',
   heroLede3: 'Rules of Differentiation —— 3.1 到 3.7 的求导法则、隐函数与逆三角函数、对数求导、变化率，附课堂例题精讲、作业题号分布、随机自测与冲刺方案。范围严格对齐 Oct 27 – Oct 29 课堂笔记。',
-  hwPending3: 'Chapter 3 的教材作业题原文正在提取中；已收录的作业题号、课堂例题与全部知识点可正常使用。',
+  hwPending3: 'Chapter 3 的作业题：3.9–3.11 已收录题干、答案与解法；3.1–3.8 的作业题号已完整列出，题干原文待补充。全部知识点与课堂例题均可正常使用。',
   hwDone2: 'Stewart 教材 Chapter 2 中老师布置的全部题目，题干为中英对照，附答案与解法；标有"核对"提示的条目表示 PDF 文本层有歧义，请对照书页确认。',
   planCross: '全科冲刺方案（两章一起考时用）',
   planCh3: 'Chapter 3 专题冲刺方案（只考第 3 章时用）'
@@ -165,6 +165,16 @@ if (typeof SECTIONS3B !== 'undefined') {
   PITFALLS.push(...PITFALLS3B);
   SHEET.push(...SHEET3B);
   PROBLEMS.push(...PROBLEMS3B);
+}
+if (typeof SECTIONS3C !== 'undefined') {
+  SECTIONS.push(...SECTIONS3C);
+  Object.assign(SCOPE_CARDS, SCOPE_CARDS3C);
+  CONCEPTS.push(...CONCEPTS3C);
+  FLASHCARDS.push(...FLASHCARDS3C);
+  PITFALLS.push(...PITFALLS3C);
+  SHEET.push(...SHEET3C);
+  PROBLEMS.push(...PROBLEMS3C);
+  if (typeof HW3C !== 'undefined') HW_PROBLEMS.push(...HW3C);
 }
 
 /* ---------- 专题（Chapter）状态：Chapter 2 与 Chapter 3 并行 ---------- */
