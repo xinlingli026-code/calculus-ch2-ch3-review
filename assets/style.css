@@ -169,6 +169,10 @@ button{font-family:inherit}
 .p-ans .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--green);font-weight:600;margin-right:6px}
 .p-steps{margin:0;padding-left:18px;font-size:13.2px;color:var(--body)}
 .p-steps li{margin-bottom:4px}
+.p-official{margin-top:12px;padding:11px 13px;border-radius:10px;background:var(--primary-soft);border:1px solid var(--line)}
+.p-official .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:6px}
+.p-official .p-steps li{margin-bottom:6px}
+.p-src{margin-top:8px;font-size:11.5px;color:var(--muted)}
 .p-actions{display:flex;gap:8px;align-items:center;margin-top:14px}
 .p-done{margin-left:auto;font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px;cursor:pointer;user-select:none}
 .p-done input{accent-color:var(--green);width:15px;height:15px;cursor:pointer}

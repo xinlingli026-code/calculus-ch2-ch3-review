@@ -40,8 +40,9 @@
 │   ├── ch3.js              中文 Chapter 3 内容层 A (3.1–3.5) + 全科冲刺方案 PLAN
 │   ├── ch3b.js             中文 Chapter 3 内容层 B (3.5–3.7) + Chapter 3 专题冲刺方案 PLAN3
 │   ├── ch3c.js             中文 Chapter 3 内容层 C (3.9–3.11) + 教材作业题库 HW3C
+│   ├── ch3d.js             中文 Chapter 3 内容层 D (3.5–3.7) + 教材作业题库 HW3D（含官方详解）
 │   └── en/                 英文内容层（与中文版共用同一套交互逻辑）
-│       ├── data.js  problems.js  hw.js  hw2.js  ch3.js  ch3b.js  ch3c.js
+│       ├── data.js  problems.js  hw.js  hw2.js  ch3.js  ch3b.js  ch3c.js  ch3d.js
 ├── LICENSE                 MIT
 ├── SECURITY.md             安全策略与漏洞报告方式
 ├── CONTRIBUTING.md         贡献指南
@@ -61,7 +62,7 @@
 | 考纲地图 | ✓ | Syllabus | 8 个考点 2.1–2.8 | 10 个考点 3.1–3.11 |
 | 概念速查 | ✓ | Concepts | 8 个知识块 | 11 个知识块 |
 | 记忆卡 | ✓ | Flashcards | 26 张 | 67 张 |
-| 教材作业 | ✓ | Homework | 107 道（题干+答案） | 17 道（3.9–3.11 全题含步骤，3.1–3.8 题号已收录） |
+| 教材作业 | ✓ | Homework | 107 道（题干+答案） | 45 道（3.5–3.7、3.9–3.11 全题含步骤与官方详解，3.1–3.4 题号已收录） |
 | 刷题 | ✓ | Examples | 52 道课堂例题 | 70 道课堂例题 |
 | 随机自测 | ✓ | Self-Test | 限时抽题、判分、错题回看 | 同左 |
 | 易错点 | ✓ | Traps | 14 条 | 30 条 |
@@ -106,8 +107,9 @@ python -m http.server 8000
 ## 内容来源 · Content provenance
 
 - 课堂笔记 NotesOnOct06 – NotesOnNov03（知识点、作业题号、课堂例题）
-- 教材：Stewart, *Calculus: Early Transcendentals*, 8th ed., Brooks/Cole 2016（章节结构与题号）
-- 所有答案与解题步骤均为本项目自行推导，并与课堂笔记中的教师答案交叉验证
+- 教材：Stewart, *Calculus: Early Transcendentals*, 8th ed., Brooks/Cole 2016（章节结构、题号与习题题干）
+- 官方详解：Cengage, *Student Solutions Manual for Single Variable Calculus*（3.5–3.7 作业条目中的「官方详解解答」区块，逐题标注手册页码）
+- 所有答案与解题步骤均为本项目自行推导，并与课堂笔记中的教师答案、官方详解手册交叉验证
 
 ## 版权声明 · Copyright
 

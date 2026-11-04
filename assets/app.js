@@ -14,6 +14,7 @@ const T = LANG === 'en' ? {
   classExample: 'Class example',
   textbookPage: p => `Textbook p.${p}`,
   answerLbl: 'Answer',
+  officialLbl: 'Official solution',
   refAnswerLbl: 'Reference answer',
   showSol: 'Show solution',
   hideSol: 'Hide solution',
@@ -72,7 +73,7 @@ const T = LANG === 'en' ? {
   heroLede2: 'Limits and Derivatives — the full 2.1–2.8 syllabus map, concept checklist, flashcards, worked class examples, the assigned homework numbers, a random self-test and an exam sprint plan. Scoped to the Oct 06 – Oct 22 lecture notes.',
   heroTitle3: 'Chapter 3 Revision Hub',
   heroLede3: 'Rules of Differentiation — the full 3.1–3.11 syllabus map covering the differentiation rules, implicit and inverse trigonometric differentiation, logarithmic derivatives, rates of change, related rates, linear approximation and hyperbolic functions, with worked class examples, assigned homework, a random self-test and a sprint plan. Scoped to the Oct 27 – Nov 03 lecture notes.',
-  hwPending3: 'Chapter 3 homework: sections 3.9–3.11 now include the full statements, answers and solutions. For 3.1–3.8 the assigned exercise numbers are listed in full, but the statements are still to be added. Every concept, flashcard, trap, formula and classroom example for Chapter 3 is available now.',
+  hwPending3: 'Chapter 3 homework: sections 3.5–3.7 and 3.9–3.11 now include the full statements, answers, step-by-step solutions and the official Solutions Manual transcript. For 3.1–3.4 the assigned exercise numbers are listed in full, but the statements are still to be added. Every concept, flashcard, trap, formula and classroom example for Chapter 3 is available now.',
   hwDone2: 'Every assigned problem from Chapter 2 of the textbook, with the answer and a step-by-step solution. Items marked "check" have an ambiguous formula in the PDF text layer — verify them against the printed page.',
   planCross: 'Whole-exam sprint plan (use when both chapters are on the test)',
   planCh3: 'Chapter 3 sprint plan (use when only Chapter 3 is on the test)'
@@ -83,6 +84,7 @@ const T = LANG === 'en' ? {
   classExample: '课堂例题',
   textbookPage: p => `教材 p.${p}`,
   answerLbl: '答案',
+  officialLbl: '官方详解解答',
   refAnswerLbl: '参考答案',
   showSol: '查看解析',
   hideSol: '收起解析',
@@ -141,7 +143,7 @@ const T = LANG === 'en' ? {
   heroLede2: 'Limits and Derivatives —— 2.1 到 2.8 的考点地图、概念速查、课堂例题精讲、作业题号分布与随机自测。范围严格对齐 Oct 06 – Oct 22 课堂笔记。',
   heroTitle3: 'Chapter 3 复习备考站',
   heroLede3: 'Rules of Differentiation —— 3.1 到 3.11 的求导法则、隐函数与逆三角函数、对数求导、变化率、相关速率、线性近似与双曲函数，附课堂例题精讲、教材作业、随机自测与冲刺方案。范围严格对齐 Oct 27 – Nov 03 课堂笔记。',
-  hwPending3: 'Chapter 3 的作业题：3.9–3.11 已收录题干、答案与解法；3.1–3.8 的作业题号已完整列出，题干原文待补充。全部知识点与课堂例题均可正常使用。',
+  hwPending3: 'Chapter 3 的作业题：3.5–3.7 与 3.9–3.11 已收录题干、答案、分步解法，并附官方详解手册的解答转写；3.1–3.4 的作业题号已完整列出，题干原文待补充。全部知识点与课堂例题均可正常使用。',
   hwDone2: 'Stewart 教材 Chapter 2 中老师布置的全部题目，题干为中英对照，附答案与解法；标有"核对"提示的条目表示 PDF 文本层有歧义，请对照书页确认。',
   planCross: '全科冲刺方案（两章一起考时用）',
   planCh3: 'Chapter 3 专题冲刺方案（只考第 3 章时用）'
@@ -176,6 +178,8 @@ if (typeof SECTIONS3C !== 'undefined') {
   PROBLEMS.push(...PROBLEMS3C);
   if (typeof HW3C !== 'undefined') HW_PROBLEMS.push(...HW3C);
 }
+/* 3.5–3.7 的作业题（题干 + 自解 + 官方详解） */
+if (typeof HW3D !== 'undefined') HW_PROBLEMS.push(...HW3D);
 
 /* ---------- 专题（Chapter）状态：Chapter 2 与 Chapter 3 并行 ---------- */
 const CH_KEY = 'calc_review_chapter_v1';
@@ -327,6 +331,7 @@ function renderHw() {
     const k = hwKey(p);
     const done = PROGRESS.done.includes(k);
     const steps = (p.steps || []).map(s => `<li>${esc(s)}</li>`).join('');
+    const official = (p.official || []).map(s => `<li>${esc(s)}</li>`).join('');
     return `<article class="p-card" data-k="${k}">
       <div class="p-top">
         <span class="p-sec">${p.sec}</span>
@@ -339,6 +344,7 @@ function renderHw() {
         <div class="p-solution">
           <div class="p-ans math"><span class="lbl">${T.answerLbl}</span>${esc(p.ans)}</div>
           ${steps ? `<ol class="p-steps">${steps}</ol>` : ''}
+          ${(official || p.src) ? `<div class="p-official">${official ? `<div class="lbl">${T.officialLbl}</div><ol class="p-steps">${official}</ol>` : ''}${p.src ? `<div class="p-src">${esc(p.src)}</div>` : ''}</div>` : ''}
           ${p.note ? `<div class="callout"><span class="ic">${IC.warn}</span><div>${esc(p.note)}</div></div>` : ''}
         </div>
         <div class="p-actions">
