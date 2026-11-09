@@ -9,7 +9,7 @@ const SECTIONS3 = [
   { id: '3.2', name: 'Product and Quotient Rules', cn: '积法则与商法则', en: 'Product & Quotient Rules', hw: [1,3,5,7,9,11,13,15,17,19,21,23,25,31,43,45,47,49,55], weight: 3, tags: ['Must know', 'Easy to miss factors'] },
   { id: '3.3', name: 'Derivatives of Trigonometric Functions', cn: '三角函数求导', en: 'Trigonometric Functions', hw: [1,3,5,7,9,11,13,15,17,18,19,20,23,33,35,39,41,43,45,51,57], weight: 5, tags: ['High weight', 'Most problem types'] },
   { id: '3.4', name: 'The Chain Rule', cn: '链式法则', en: 'The Chain Rule', hw: [7,9,11,13,15,17,25,27,29,31,43,51,53,61,71,73,79,81], weight: 5, tags: ['High weight', 'Heavy computation'] },
-  { id: '3.5', name: 'Implicit Differentiation', cn: '隐函数求导', en: 'Implicit Differentiation', hw: [], weight: 3, tags: ['New material', 'Exercise list to confirm'] }
+  { id: '3.5', name: 'Implicit & Inverse Trig', cn: '隐函数求导与逆三角函数求导', en: 'Implicit & Inverse Trig', hw: [5,7,9,11,13,15,17,19,27,35,49,51,57,63,75], weight: 5, tags: ['Key section', 'Includes inverse trig', 'Exercises p.215'] }
 ];
 
 const SCOPE_CARDS3 = {
