@@ -73,7 +73,7 @@ const T = LANG === 'en' ? {
   heroLede2: 'Limits and Derivatives — the full 2.1–2.8 syllabus map, concept checklist, flashcards, worked class examples, the assigned homework numbers, a random self-test and an exam sprint plan. Scoped to the Oct 06 – Oct 22 lecture notes.',
   heroTitle3: 'Chapter 3 Revision Hub',
   heroLede3: 'Rules of Differentiation — the full 3.1–3.11 syllabus map covering the differentiation rules, implicit and inverse trigonometric differentiation, logarithmic derivatives, rates of change, related rates, linear approximation and hyperbolic functions, with worked class examples, assigned homework, a random self-test and a sprint plan. Scoped to the Oct 27 – Nov 03 lecture notes.',
-  hwPending3: 'Chapter 3 homework: sections 3.5–3.8 and 3.9–3.11 now include the full statements, answers and step-by-step solutions (3.8 also cross-checked against the official answers). For 3.1–3.4 the assigned exercise numbers are listed in full, but the statements are still to be added. Every concept, flashcard, trap, formula and classroom example for Chapter 3 is available now.',
+  hwPending3: 'Chapter 3 homework: every assigned exercise in sections 3.1–3.11 now includes the full statement, answer and step-by-step solution (3.8 also cross-checked against the official answers). Every concept, flashcard, trap, formula and classroom example for Chapter 3 is available now.',
   hwDone2: 'Every assigned problem from Chapter 2 of the textbook, with the answer and a step-by-step solution. Items marked "check" have an ambiguous formula in the PDF text layer — verify them against the printed page.',
   planCross: 'Whole-exam sprint plan (use when both chapters are on the test)',
   planCh3: 'Chapter 3 sprint plan (use when only Chapter 3 is on the test)'
@@ -143,7 +143,7 @@ const T = LANG === 'en' ? {
   heroLede2: 'Limits and Derivatives —— 2.1 到 2.8 的考点地图、概念速查、课堂例题精讲、作业题号分布与随机自测。范围严格对齐 Oct 06 – Oct 22 课堂笔记。',
   heroTitle3: 'Chapter 3 复习备考站',
   heroLede3: 'Rules of Differentiation —— 3.1 到 3.11 的求导法则、隐函数与逆三角函数、对数求导、变化率、相关速率、线性近似与双曲函数，附课堂例题精讲、教材作业、随机自测与冲刺方案。范围严格对齐 Oct 27 – Nov 03 课堂笔记。',
-  hwPending3: 'Chapter 3 的作业题：3.5–3.8 与 3.9–3.11 已收录题干、答案、分步解法，3.8 另附官方答案对照；3.1–3.4 的作业题号已完整列出，题干原文待补充。全部知识点与课堂例题均可正常使用。',
+  hwPending3: 'Chapter 3 的作业题：3.1–3.11 全节指定题目已收录题干、答案与分步解法，3.8 另附官方答案对照。全部知识点与课堂例题均可正常使用。',
   hwDone2: 'Stewart 教材 Chapter 2 中老师布置的全部题目，题干为中英对照，附答案与解法；标有"核对"提示的条目表示 PDF 文本层有歧义，请对照书页确认。',
   planCross: '全科冲刺方案（两章一起考时用）',
   planCh3: 'Chapter 3 专题冲刺方案（只考第 3 章时用）'
@@ -190,6 +190,23 @@ if (typeof SECTIONS3C !== 'undefined') {
 /* 3.5–3.8 的作业题（题干 + 自解；3.8 另附官方答案对照） */
 if (typeof HW3D !== 'undefined') HW_PROBLEMS.push(...HW3D);
 if (typeof HW3E !== 'undefined') HW_PROBLEMS.push(...HW3E);
+if (typeof HW3F1 !== 'undefined') HW_PROBLEMS.push(...HW3F1);
+if (typeof HW3F2 !== 'undefined') HW_PROBLEMS.push(...HW3F2);
+if (typeof HW3F3 !== 'undefined') HW_PROBLEMS.push(...HW3F3);
+if (typeof HW3F4 !== 'undefined') HW_PROBLEMS.push(...HW3F4);
+/* 作业题按「节号 → 题号」排序：节号要按数字段比较（3.10 在 3.9 之后） */
+function hwSecKey(s) { return String(s || '').split('.').map(x => parseInt(x, 10) || 0); }
+HW_PROBLEMS.sort((a, b) => {
+  const A = hwSecKey(a.sec), B = hwSecKey(b.sec);
+  for (let i = 0; i < Math.max(A.length, B.length); i++) {
+    const d = (A[i] || 0) - (B[i] || 0);
+    if (d) return d;
+  }
+  const na = parseFloat(a.num), nb = parseFloat(b.num);
+  const ka = isNaN(na) ? Infinity : na, kb = isNaN(nb) ? Infinity : nb;
+  if (ka !== kb) return ka - kb;
+  return String(a.num).localeCompare(String(b.num));
+});
 
 /* ---------- 专题（Chapter）状态：Chapter 2 与 Chapter 3 并行 ---------- */
 const CH_KEY = 'calc_review_chapter_v1';

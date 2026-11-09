@@ -42,8 +42,9 @@
 │   ├── ch3c.js             中文 Chapter 3 内容层 C (3.9–3.11) + 教材作业题库 HW3C
 │   ├── ch3d.js             中文 Chapter 3 内容层 D (3.5–3.7) + 教材作业题库 HW3D
 │   ├── ch3e.js             中文 Chapter 3 内容层 E (3.8) + 教材作业题库 HW3E（含官方答案对照）
+│   ├── ch3f.js             中文 Chapter 3 内容层 F (3.1–3.4) + 教材作业题库 HW3F1–HW3F4
 │   └── en/                 英文内容层（与中文版共用同一套交互逻辑）
-│       ├── data.js  problems.js  hw.js  hw2.js  ch3.js  ch3b.js  ch3c.js  ch3d.js  ch3e.js
+│       ├── data.js  problems.js  hw.js  hw2.js  ch3.js  ch3b.js  ch3c.js  ch3d.js  ch3e.js  ch3f.js
 ├── LICENSE                 MIT
 ├── SECURITY.md             安全策略与漏洞报告方式
 ├── CONTRIBUTING.md         贡献指南
@@ -63,7 +64,7 @@
 | 考纲地图 | ✓ | Syllabus | 8 个考点 2.1–2.8 | 11 个考点 3.1–3.11 |
 | 概念速查 | ✓ | Concepts | 8 个知识块 | 12 个知识块 |
 | 记忆卡 | ✓ | Flashcards | 26 张 | 59 张 |
-| 教材作业 | ✓ | Homework | 107 道（题干+答案） | 67 道（3.5–3.8、3.9–3.11 全题含步骤，3.8 另附官方答案对照；3.1–3.4 题号已收录） |
+| 教材作业 | ✓ | Homework | 107 道（题干+答案） | 146 道（3.1–3.11 全节指定题目均含题干、答案与分步解法，3.8 另附官方答案对照） |
 | 刷题 | ✓ | Examples | 52 道课堂例题 | 75 道课堂例题 |
 | 随机自测 | ✓ | Self-Test | 限时抽题、判分、错题回看 | 同左 |
 | 易错点 | ✓ | Traps | 14 条 | 37 条 |
