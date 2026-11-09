@@ -40,9 +40,10 @@
 │   ├── ch3.js              中文 Chapter 3 内容层 A (3.1–3.5) + 全科冲刺方案 PLAN
 │   ├── ch3b.js             中文 Chapter 3 内容层 B (3.5–3.7) + Chapter 3 专题冲刺方案 PLAN3
 │   ├── ch3c.js             中文 Chapter 3 内容层 C (3.9–3.11) + 教材作业题库 HW3C
-│   ├── ch3d.js             中文 Chapter 3 内容层 D (3.5–3.7) + 教材作业题库 HW3D（含官方详解）
+│   ├── ch3d.js             中文 Chapter 3 内容层 D (3.5–3.7) + 教材作业题库 HW3D
+│   ├── ch3e.js             中文 Chapter 3 内容层 E (3.8) + 教材作业题库 HW3E（含官方答案对照）
 │   └── en/                 英文内容层（与中文版共用同一套交互逻辑）
-│       ├── data.js  problems.js  hw.js  hw2.js  ch3.js  ch3b.js  ch3c.js  ch3d.js
+│       ├── data.js  problems.js  hw.js  hw2.js  ch3.js  ch3b.js  ch3c.js  ch3d.js  ch3e.js
 ├── LICENSE                 MIT
 ├── SECURITY.md             安全策略与漏洞报告方式
 ├── CONTRIBUTING.md         贡献指南
@@ -59,14 +60,14 @@
 
 | 页签 | 中文 | English | Chapter 2 | Chapter 3 |
 |---|---|---|---|---|
-| 考纲地图 | ✓ | Syllabus | 8 个考点 2.1–2.8 | 10 个考点 3.1–3.11 |
-| 概念速查 | ✓ | Concepts | 8 个知识块 | 11 个知识块 |
-| 记忆卡 | ✓ | Flashcards | 26 张 | 48 张 |
-| 教材作业 | ✓ | Homework | 107 道（题干+答案） | 45 道（3.5–3.7、3.9–3.11 全题含步骤与官方详解，3.1–3.4 题号已收录） |
-| 刷题 | ✓ | Examples | 52 道课堂例题 | 70 道课堂例题 |
+| 考纲地图 | ✓ | Syllabus | 8 个考点 2.1–2.8 | 11 个考点 3.1–3.11 |
+| 概念速查 | ✓ | Concepts | 8 个知识块 | 12 个知识块 |
+| 记忆卡 | ✓ | Flashcards | 26 张 | 59 张 |
+| 教材作业 | ✓ | Homework | 107 道（题干+答案） | 67 道（3.5–3.8、3.9–3.11 全题含步骤，3.8 另附官方答案对照；3.1–3.4 题号已收录） |
+| 刷题 | ✓ | Examples | 52 道课堂例题 | 75 道课堂例题 |
 | 随机自测 | ✓ | Self-Test | 限时抽题、判分、错题回看 | 同左 |
-| 易错点 | ✓ | Traps | 14 条 | 30 条 |
-| 公式速查表 | ✓ | Formulas | 5 列（23 式） | 11 列（67 式） |
+| 易错点 | ✓ | Traps | 14 条 | 37 条 |
+| 公式速查表 | ✓ | Formulas | 5 列（23 式） | 12 列（79 式） |
 | 冲刺方案 | ✓ | Sprint Plan | 全科方案 + Chapter 3 专题方案 | 同左 |
 
 **语言切换**：两版共用一套交互逻辑，内容层分离；学习进度通过 `localStorage`
@@ -108,8 +109,11 @@ python -m http.server 8000
 
 - 课堂笔记 NotesOnOct06 – NotesOnNov03（知识点、作业题号、课堂例题）
 - 教材：Stewart, *Calculus: Early Transcendentals*, 8th ed., Brooks/Cole 2016（章节结构、题号与习题题干）
-- 官方详解：Cengage, *Student Solutions Manual for Single Variable Calculus*（3.5–3.7 作业条目中的「官方详解解答」区块，逐题标注手册页码）
-- 所有答案与解题步骤均为本项目自行推导，并与课堂笔记中的教师答案、官方详解手册交叉验证
+- 官方答案对照：仅 **3.8 的 11 道奇数题**保留官方答案的一行数值对照，来源为教材书末
+  *Appendix I "Answers to Odd-Numbered Exercises"*（A79）与详解手册 p.128 的数值核对，逐题标注出处
+- 3.5–3.7 早前收录的**官方详解手册整段解答转写已全部撤回**，站内只保留本项目自行推导的
+  答案与分步解法；每题仍留一行来源说明，便于核对
+- 所有答案与解题步骤均为本项目自行推导，并与课堂笔记中的教师答案、官方答案册交叉验证
 
 ## 版权声明 · Copyright
 
